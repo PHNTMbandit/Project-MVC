@@ -23,14 +23,10 @@ namespace MVC.Player
             _rb = GetComponent<Rigidbody>();
         }
 
-        public bool IsGrounded()
-        {
-            return Physics.Raycast(_rb.position, Vector3.down, _groundCheckDistance, _groundLayers);
-        }
+        public bool IsGrounded() => Physics.Raycast(_rb.position, Vector3.down, _groundCheckDistance, _groundLayers);
 
         public void Jump()
         {
-            print("jump");
             if (IsGrounded())
             {
                 _rb.AddForce(_rb.transform.up * _jumpForce, ForceMode.Impulse);
