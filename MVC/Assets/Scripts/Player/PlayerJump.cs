@@ -25,14 +25,15 @@ namespace MVC.Player
 
         public bool IsGrounded()
         {
-            return Physics.Raycast(transform.position, Vector3.down, _groundCheckDistance, _groundLayers);
+            return Physics.Raycast(_rb.position, Vector3.down, _groundCheckDistance, _groundLayers);
         }
 
         public void Jump()
         {
+            print("jump");
             if (IsGrounded())
             {
-                _rb.AddForce(transform.up * _jumpForce, ForceMode.Impulse);
+                _rb.AddForce(_rb.transform.up * _jumpForce, ForceMode.Impulse);
             }
         }
 

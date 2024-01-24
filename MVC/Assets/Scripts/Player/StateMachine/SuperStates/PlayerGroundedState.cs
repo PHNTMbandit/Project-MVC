@@ -10,14 +10,7 @@ namespace MVC.Player.StateMachine.SuperStates
         {
             base.OnEnter();
 
-            stateController.InputReader.onJump += stateController.PlayerJump.Jump;
-        }
-
-        public override void OnExit()
-        {
-            base.OnExit();
-
-            stateController.InputReader.onJump -= stateController.PlayerJump.Jump;
+            stateController.InputReader.onJump.AddListener(stateController.PlayerJump.Jump);
         }
 
         public override void OnFixedUpdate()

@@ -12,7 +12,8 @@ namespace MVC.Input
         public Vector2 LookInput { get; private set; }
         public Vector2 MoveInput { get; private set; }
 
-        public UnityAction onJump;
+        [HideInInspector]
+        public UnityEvent onJump;
 
         private void OnEnable()
         {
