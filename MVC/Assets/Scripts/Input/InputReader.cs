@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 namespace MVC.Input
@@ -10,6 +11,9 @@ namespace MVC.Input
         public bool JumpInput { get; private set; }
         public Vector2 LookInput { get; private set; }
         public Vector2 MoveInput { get; private set; }
+
+        [HideInInspector]
+        public UnityEvent onJump;
 
         private void OnEnable()
         {
@@ -33,6 +37,8 @@ namespace MVC.Input
             if (context.performed)
             {
                 JumpInput = true;
+
+                onJump?.Invoke();
             }
             else if (context.canceled)
             {

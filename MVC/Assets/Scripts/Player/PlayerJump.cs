@@ -1,4 +1,3 @@
-using MVC.Input;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -8,17 +7,14 @@ namespace MVC.Player
     [AddComponentMenu("Player/Player Jump")]
     public class PlayerJump : MonoBehaviour
     {
-        [BoxGroup("Settings"), Range(0, 10), SerializeField]
-        private float _jumpForce;
+        [BoxGroup("Settings"), Range(0, 50), SerializeField]
+        private float _jumpForce, _gravityScale;
 
         [BoxGroup("Ground Check"), Range(0, 10), SerializeField]
         private float _groundCheckDistance;
 
         [BoxGroup("Ground Check"), SerializeField]
         private LayerMask _groundLayers;
-
-        [FoldoutGroup("References"), SerializeField]
-        private InputReader _inputReader;
 
         private Rigidbody _rb;
 
@@ -27,25 +23,25 @@ namespace MVC.Player
             _rb = GetComponent<Rigidbody>();
         }
 
-        private void FixedUpdate()
-        {
-            Jump();
-        }
-
-        public bool IsGrounded()
-        {
-            return Physics.Raycast(transform.position, Vector3.down, _groundCheckDistance, _groundLayers);
-        }
+        public bool IsGrounded() => Physics.Raycast(_rb.position, Vector3.down, _groundCheckDistance, _groundLayers);
 
         public void Jump()
         {
-            if (_inputReader.JumpInput && IsGrounded())
+            if (IsGrounded())
             {
-                _rb.AddForce(transform.up * _jumpForce, ForceMode.Impulse);
+                _rb.AddForce(_rb.transform.up * _jumpForce, ForceMode.Impulse);
             }
         }
 
-        void OnDrawGizmosSelected()
+        public void FasterFall()
+        {
+            if (_rb.velocity.y < 0)
+            {
+                _rb.AddForce(-_gravityScale * Vector3.up, ForceMode.Acceleration);
+            }
+        }
+
+        private void OnDrawGizmosSelected()
         {
             Gizmos.color = Color.blue;
             Gizmos.DrawLine(transform.position, transform.position - Vector3.up * _groundCheckDistance);
