@@ -11,6 +11,9 @@ namespace MVC.Player
         [BoxGroup("Settings"), Range(0, 10), SerializeField]
         private float _jumpForce;
 
+        [BoxGroup("Ground Check"), Range(0, 10), SerializeField]
+        private float _groundCheckDistance;
+
         [BoxGroup("Ground Check"), SerializeField]
         private LayerMask _groundLayers;
 
@@ -31,16 +34,21 @@ namespace MVC.Player
 
         public bool IsGrounded()
         {
-            return Physics.Raycast(transform.position, Vector3.down, 1f, _groundLayers);
+            return Physics.Raycast(transform.position, Vector3.down, _groundCheckDistance, _groundLayers);
         }
 
         public void Jump()
         {
             if (_inputReader.JumpInput && IsGrounded())
             {
-                _rb.velocity = new(_rb.velocity.x, 0, _rb.velocity.z);
                 _rb.AddForce(transform.up * _jumpForce, ForceMode.Impulse);
             }
+        }
+
+        void OnDrawGizmosSelected()
+        {
+            Gizmos.color = Color.blue;
+            Gizmos.DrawLine(transform.position, transform.position - Vector3.up * _groundCheckDistance);
         }
     }
 }
