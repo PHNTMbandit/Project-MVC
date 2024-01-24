@@ -7,8 +7,8 @@ namespace MVC.Player
     [AddComponentMenu("Player/Player Jump")]
     public class PlayerJump : MonoBehaviour
     {
-        [BoxGroup("Settings"), Range(0, 10), SerializeField]
-        private float _jumpForce;
+        [BoxGroup("Settings"), Range(0, 50), SerializeField]
+        private float _jumpForce, _gravityScale;
 
         [BoxGroup("Ground Check"), Range(0, 10), SerializeField]
         private float _groundCheckDistance;
@@ -33,6 +33,14 @@ namespace MVC.Player
             if (IsGrounded())
             {
                 _rb.AddForce(transform.up * _jumpForce, ForceMode.Impulse);
+            }
+        }
+
+        public void FasterFall()
+        {
+            if (_rb.velocity.y < 0)
+            {
+                _rb.AddForce(-_gravityScale * Vector3.up, ForceMode.Acceleration);
             }
         }
 
