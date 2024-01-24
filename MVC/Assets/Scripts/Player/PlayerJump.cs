@@ -1,4 +1,3 @@
-using MVC.Input;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -17,19 +16,11 @@ namespace MVC.Player
         [BoxGroup("Ground Check"), SerializeField]
         private LayerMask _groundLayers;
 
-        [FoldoutGroup("References"), SerializeField]
-        private InputReader _inputReader;
-
         private Rigidbody _rb;
 
         private void Awake()
         {
             _rb = GetComponent<Rigidbody>();
-        }
-
-        private void FixedUpdate()
-        {
-            Jump();
         }
 
         public bool IsGrounded()
@@ -39,13 +30,13 @@ namespace MVC.Player
 
         public void Jump()
         {
-            if (_inputReader.JumpInput && IsGrounded())
+            if (IsGrounded())
             {
                 _rb.AddForce(transform.up * _jumpForce, ForceMode.Impulse);
             }
         }
 
-        void OnDrawGizmosSelected()
+        private void OnDrawGizmosSelected()
         {
             Gizmos.color = Color.blue;
             Gizmos.DrawLine(transform.position, transform.position - Vector3.up * _groundCheckDistance);

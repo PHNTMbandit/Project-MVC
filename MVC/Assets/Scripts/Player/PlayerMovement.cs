@@ -1,4 +1,3 @@
-using MVC.Input;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -10,9 +9,6 @@ namespace MVC.Player
     {
         [BoxGroup("Settings"), Range(0, 100), SerializeField]
         private float _moveSpeed;
-
-        [FoldoutGroup("References"), SerializeField]
-        private InputReader _inputReader;
 
         private Camera _camera;
         private Rigidbody _rb;
@@ -29,14 +25,9 @@ namespace MVC.Player
             transform.localRotation = Quaternion.Euler(0, _camera.transform.localEulerAngles.y, 0);
         }
 
-        private void FixedUpdate()
+        public void Move(Vector2 input)
         {
-            Move();
-        }
-
-        public void Move()
-        {
-            _moveDirection = transform.forward * _inputReader.MoveInput.y + transform.right * _inputReader.MoveInput.x;
+            _moveDirection = transform.forward * input.y + transform.right * input.x;
             _rb.AddForce(_moveSpeed * _moveDirection.normalized, ForceMode.Force);
 
             Vector3 flatVelocity = new(_rb.velocity.x, 0, _rb.velocity.z);
