@@ -23,6 +23,11 @@ namespace MVC.Player
             _rb = GetComponent<Rigidbody>();
         }
 
+        private void Update()
+        {
+            _rb.useGravity = !IsGrounded();
+        }
+
         public bool IsGrounded() => Physics.Raycast(_rb.position, Vector3.down, _groundCheckDistance, _groundLayers);
 
         public void Jump()
