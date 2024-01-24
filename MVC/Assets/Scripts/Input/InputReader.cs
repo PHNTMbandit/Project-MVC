@@ -9,6 +9,7 @@ namespace MVC.Input
     {
         public GameControls GameControls { get; private set; }
         public bool JumpInput { get; private set; }
+        public bool ShootInput { get; private set; }
         public Vector2 LookInput { get; private set; }
         public Vector2 MoveInput { get; private set; }
 
@@ -54,6 +55,18 @@ namespace MVC.Input
         public void OnMove(InputAction.CallbackContext context)
         {
             MoveInput = context.ReadValue<Vector2>();
+        }
+
+        public void OnShoot(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+            {
+                ShootInput = true;
+            }
+            else if (context.canceled)
+            {
+                ShootInput = false;
+            }
         }
 
         public void EnableGameplayInput()
