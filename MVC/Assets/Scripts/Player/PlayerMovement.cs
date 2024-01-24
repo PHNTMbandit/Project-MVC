@@ -1,4 +1,3 @@
-using Cinemachine;
 using MVC.Input;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -6,10 +5,10 @@ using UnityEngine;
 namespace MVC.Player
 {
     [RequireComponent(typeof(Rigidbody))]
-    [CreateAssetMenu(fileName = "Player Movement", menuName = "MVC/Player/Movement")]
+    [AddComponentMenu("Player/Player Movement")]
     public class PlayerMovement : MonoBehaviour
     {
-        [BoxGroup("Settings"), Range(0, 10), SerializeField]
+        [BoxGroup("Settings"), Range(0, 100), SerializeField]
         private float _moveSpeed;
 
         [FoldoutGroup("References"), SerializeField]
@@ -38,7 +37,7 @@ namespace MVC.Player
         public void Move()
         {
             _moveDirection = transform.forward * _inputReader.MoveInput.y + transform.right * _inputReader.MoveInput.x;
-            _rb.AddForce(_moveSpeed * 10f * _moveDirection.normalized, ForceMode.Force);
+            _rb.AddForce(_moveSpeed * _moveDirection.normalized, ForceMode.Force);
 
             Vector3 flatVelocity = new(_rb.velocity.x, 0, _rb.velocity.z);
 
