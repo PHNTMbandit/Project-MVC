@@ -7,6 +7,7 @@ namespace MVC.Input
     public class InputReader : ScriptableObject, GameControls.IGameplayActions
     {
         public GameControls GameControls { get; private set; }
+        public bool JumpInput { get; private set; }
         public Vector2 LookInput { get; private set; }
         public Vector2 MoveInput { get; private set; }
 
@@ -25,6 +26,18 @@ namespace MVC.Input
         private void OnDisable()
         {
             DisableGameplayInput();
+        }
+
+        public void OnJump(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+            {
+                JumpInput = true;
+            }
+            else if (context.canceled)
+            {
+                JumpInput = false;
+            }
         }
 
         public void OnLook(InputAction.CallbackContext context)
