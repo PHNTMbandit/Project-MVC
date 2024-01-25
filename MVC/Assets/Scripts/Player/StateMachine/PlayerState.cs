@@ -12,13 +12,20 @@ namespace MVC.Player.StateMachine
         }
 
         public virtual void OnEnter() { }
+
         public virtual void OnExit() { }
-        public virtual void OnUpdate() { }
+
+        public virtual void OnUpdate()
+        {
+            stateController.PlayerMovement.Look();
+        }
+
         public virtual void OnFixedUpdate()
         {
-            stateController.PlayerMovement.Move(stateController.InputReader.MoveInput);
-            //   stateController.PlayerMovement.Look(stateController.InputReader.LookInput, Camera.main.transform);
+            if (stateController.InputReader.MoveInput != Vector2.zero)
+            {
+                stateController.PlayerMovement.Move(stateController.InputReader.MoveInput);
+            }
         }
     }
-
 }

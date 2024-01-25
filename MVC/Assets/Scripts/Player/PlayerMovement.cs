@@ -8,34 +8,34 @@ namespace MVC.Player
     public class PlayerMovement : MonoBehaviour
     {
         [BoxGroup("Settings"), Range(0, 100), SerializeField]
-        private float _moveSpeed, _rotationSpeed;
+        private float _moveSpeed, _turnSmooth;
 
+        private Camera _camera;
         private Rigidbody _rb;
-        private Vector3 _moveDirection;
+        private float _turnSmoothVelocity;
 
         private void Awake()
         {
+            _camera = Camera.main;
             _rb = GetComponent<Rigidbody>();
         }
 
-        public void Look(Vector2 input, Transform cameraTransform)
+        public void Look()
         {
-            Vector3 moveDirection = _rb.position - new Vector3(cameraTransform.position.x, _rb.position.y, cameraTransform.position.z);
-            Vector3 inputDirection = _rb.transform.forward * input.y + _rb.transform.right * input.x;
-
-            if (inputDirection != Vector3.zero)
-            {
-                _rb.transform.forward = Vector3.Slerp(_rb.transform.forward, input.normalized, Time.deltaTime * _rotationSpeed);
-            }
+            _rb.MoveRotation(Quaternion.Euler(0, _camera.transform.localEulerAngles.y, 0));
+            // transform.localRotation = Quaternion.LookRotation(_camera.transform.forward, _camera.transform.up);
         }
 
         public void Move(Vector2 input)
         {
-            _moveDirection = transform.forward * input.y + transform.right * input.x;
-            _rb.AddForce(_moveSpeed * _moveDirection.normalized, ForceMode.Force);
+            Vector3 direction = new Vector3(input.x, 0, input.y).normalized;
+            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + _camera.transform.eulerAngles.y;
+            float angle = Mathf.SmoothDampAngle(_rb.transform.eulerAngles.y, targetAngle, ref _turnSmoothVelocity, _turnSmooth);
+            Vector3 moveDirection = Quaternion.Euler(0, targetAngle, 0) * Vector3.forward;
+
+            _rb.AddForce(_moveSpeed * moveDirection, ForceMode.Force);
 
             Vector3 flatVelocity = new(_rb.velocity.x, 0, _rb.velocity.z);
-
             if (flatVelocity.magnitude > _moveSpeed)
             {
                 Vector3 limitedVelocity = flatVelocity.normalized * _moveSpeed;
