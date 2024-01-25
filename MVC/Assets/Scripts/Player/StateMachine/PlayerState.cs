@@ -30,7 +30,6 @@ namespace MVC.Player.StateMachine
 
         public virtual void OnUpdate()
         {
-            stateController.PlayerMovement.Look();
         }
 
         public virtual void OnFixedUpdate()

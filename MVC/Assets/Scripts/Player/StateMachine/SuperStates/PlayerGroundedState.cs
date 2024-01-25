@@ -21,11 +21,6 @@ namespace MVC.Player.StateMachine.SuperStates
             {
                 stateController.PlayerShoot.Shoot();
             }
-
-            if (!stateController.PlayerJump.IsGrounded())
-            {
-                stateController.StateMachine.ChangeState(stateController.InAirState);
-            }
         }
     }
 }
