@@ -293,7 +293,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _jumpForce: 15
   _gravityScale: 45
-  _groundCheckDistance: 1.25
+  _groundCheckDistance: 1.05
   _groundLayers:
     serializedVersion: 2
     m_Bits: 65

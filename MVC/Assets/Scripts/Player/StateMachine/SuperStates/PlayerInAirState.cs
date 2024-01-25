@@ -18,7 +18,6 @@ namespace MVC.Player.StateMachine.SuperStates
             base.OnFixedUpdate();
 
             stateController.PlayerJump.FasterFall();
-            stateController.PlayerMovement.Move(stateController.InputReader.MoveInput);
         }
 
         public override void OnUpdate()

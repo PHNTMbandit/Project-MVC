@@ -8,21 +8,25 @@ namespace MVC.Player
     public class PlayerMovement : MonoBehaviour
     {
         [BoxGroup("Settings"), Range(0, 100), SerializeField]
-        private float _moveSpeed;
+        private float _moveSpeed, _rotationSpeed;
 
-        private Camera _camera;
         private Rigidbody _rb;
         private Vector3 _moveDirection;
 
         private void Awake()
         {
-            _camera = Camera.main;
             _rb = GetComponent<Rigidbody>();
         }
 
-        private void Update()
+        public void Look(Vector2 input, Transform cameraTransform)
         {
-            transform.localRotation = Quaternion.Euler(0, _camera.transform.localEulerAngles.y, 0);
+            Vector3 moveDirection = _rb.position - new Vector3(cameraTransform.position.x, _rb.position.y, cameraTransform.position.z);
+            Vector3 inputDirection = _rb.transform.forward * input.y + _rb.transform.right * input.x;
+
+            if (inputDirection != Vector3.zero)
+            {
+                _rb.transform.forward = Vector3.Slerp(_rb.transform.forward, input.normalized, Time.deltaTime * _rotationSpeed);
+            }
         }
 
         public void Move(Vector2 input)

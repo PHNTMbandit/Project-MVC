@@ -27,12 +27,5 @@ namespace MVC.Player.StateMachine.SuperStates
                 stateController.StateMachine.ChangeState(stateController.InAirState);
             }
         }
-
-        public override void OnFixedUpdate()
-        {
-            base.OnFixedUpdate();
-
-            stateController.PlayerMovement.Move(stateController.InputReader.MoveInput);
-        }
     }
 }
