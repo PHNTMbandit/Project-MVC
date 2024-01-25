@@ -28,7 +28,7 @@ namespace MVC.Player
             _rb.useGravity = !IsGrounded();
         }
 
-        public bool IsGrounded() => Physics.Raycast(_rb.position, Vector3.down, _groundCheckDistance, _groundLayers);
+        public bool IsGrounded() => Physics.Raycast(transform.position, Vector3.down, _groundCheckDistance, _groundLayers);
 
         public void Jump()
         {

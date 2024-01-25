@@ -6,11 +6,14 @@ namespace MVC.Player.StateMachine.SuperStates
         {
         }
 
-        public override void OnEnter()
+        public override void OnUpdate()
         {
-            base.OnEnter();
+            base.OnUpdate();
 
-            stateController.InputReader.onJump.RemoveAllListeners();
+            if (stateController.PlayerJump.IsGrounded())
+            {
+                stateController.StateMachine.ChangeState(stateController.IdleState);
+            }
         }
 
         public override void OnFixedUpdate()
@@ -18,6 +21,7 @@ namespace MVC.Player.StateMachine.SuperStates
             base.OnFixedUpdate();
 
             stateController.PlayerJump.FasterFall();
+            stateController.PlayerMovement.Move(stateController.InputReader.MoveInput);
         }
     }
 }

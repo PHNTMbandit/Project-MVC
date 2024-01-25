@@ -117,8 +117,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.57534, y: 0.29689336, z: 0.41575003}
-  m_Center: {x: 0, y: 0.15898108, z: 0.062244654}
+  m_Size: {x: 0.57534, y: 0.31718734, z: 0.41575003}
+  m_Center: {x: 0, y: 0.15038742, z: 0.062244654}
 --- !u!114 &1795627707628529358
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -312,7 +312,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _jumpForce: 15
   _gravityScale: 45
-  _groundCheckDistance: 0.13
+  _groundCheckDistance: 0.34
   _groundLayers:
     serializedVersion: 2
     m_Bits: 65
@@ -344,6 +344,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa4a2a3530616e346a415bd38c95a63a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _aimingTarget: {fileID: 5580564452631325157}
   _bulletPrefab: {fileID: 0}
 --- !u!1001 &5402240032960302606
 PrefabInstance:

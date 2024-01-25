@@ -16,12 +16,14 @@ namespace MVC.Player
         [FoldoutGroup("References"), SerializeField]
         private Transform _followTarget, _moveTarget;
 
+        private Animator _animator;
         private Rigidbody _rb;
         private float _turnSmoothVelocity;
 
         private void Awake()
         {
             _rb = GetComponent<Rigidbody>();
+            _animator = GetComponentInChildren<Animator>();
         }
 
         public void Move(Vector2 input)
@@ -32,7 +34,9 @@ namespace MVC.Player
             _moveTarget.rotation = Quaternion.Euler(0, angle, 0);
 
             Vector3 moveDirection = Quaternion.Euler(0, targetAngle, 0) * Vector3.forward;
-            _rb.AddForce(_moveSpeed * moveDirection, ForceMode.Force);
+            _rb.AddForce(_moveSpeed * input.magnitude * moveDirection, ForceMode.Force);
+
+            _animator.SetFloat("speed", _rb.velocity.magnitude);
         }
     }
 }
