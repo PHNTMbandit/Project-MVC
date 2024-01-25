@@ -5,15 +5,28 @@ namespace MVC.Player.StateMachine
     public abstract class PlayerState
     {
         protected PlayerStateController stateController;
+        protected string stateAnimationName;
+
+        protected PlayerState(PlayerStateController stateController, string stateAnimationName)
+        {
+            this.stateController = stateController;
+            this.stateAnimationName = stateAnimationName;
+        }
 
         protected PlayerState(PlayerStateController stateController)
         {
             this.stateController = stateController;
         }
 
-        public virtual void OnEnter() { }
+        public virtual void OnEnter()
+        {
+            stateController.Animator.SetBool(stateAnimationName, true);
+        }
 
-        public virtual void OnExit() { }
+        public virtual void OnExit()
+        {
+            stateController.Animator.SetBool(stateAnimationName, false);
+        }
 
         public virtual void OnUpdate()
         {
@@ -22,10 +35,6 @@ namespace MVC.Player.StateMachine
 
         public virtual void OnFixedUpdate()
         {
-            if (stateController.InputReader.MoveInput != Vector2.zero)
-            {
-                stateController.PlayerMovement.Move(stateController.InputReader.MoveInput);
-            }
         }
     }
 }

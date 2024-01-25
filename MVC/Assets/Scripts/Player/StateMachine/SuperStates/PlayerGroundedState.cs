@@ -2,7 +2,7 @@ namespace MVC.Player.StateMachine.SuperStates
 {
     public class PlayerGroundedState : PlayerState
     {
-        public PlayerGroundedState(PlayerStateController stateController) : base(stateController)
+        public PlayerGroundedState(PlayerStateController stateController, string stateAnimationName) : base(stateController, stateAnimationName)
         {
         }
 

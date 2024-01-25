@@ -2,7 +2,7 @@ namespace MVC.Player.StateMachine.SuperStates
 {
     public class PlayerInAirState : PlayerState
     {
-        public PlayerInAirState(PlayerStateController stateController) : base(stateController)
+        public PlayerInAirState(PlayerStateController stateController, string stateAnimationName) : base(stateController, stateAnimationName)
         {
         }
 
@@ -26,7 +26,7 @@ namespace MVC.Player.StateMachine.SuperStates
 
             if (stateController.PlayerJump.IsGrounded())
             {
-                stateController.StateMachine.ChangeState(stateController.GroundedState);
+                stateController.StateMachine.ChangeState(stateController.IdleState);
             }
         }
     }
