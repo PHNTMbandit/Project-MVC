@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace MVC.Player.StateMachine.SuperStates
 {
     public class PlayerGroundedState : PlayerState
@@ -16,6 +18,11 @@ namespace MVC.Player.StateMachine.SuperStates
         public override void OnUpdate()
         {
             base.OnUpdate();
+
+            if (stateController.InputReader.AimInput)
+            {
+                stateController.StateMachine.ChangeState(stateController.AimState);
+            }
 
             if (stateController.InputReader.ShootInput)
             {

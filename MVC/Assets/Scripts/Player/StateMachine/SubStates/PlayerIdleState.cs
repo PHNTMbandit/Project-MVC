@@ -10,6 +10,8 @@ namespace MVC.Player.StateMachine.SuperStates
 
         public override void OnUpdate()
         {
+            base.OnUpdate();
+
             if (stateController.InputReader.MoveInput != Vector2.zero)
             {
                 stateController.StateMachine.ChangeState(stateController.WalkState);
