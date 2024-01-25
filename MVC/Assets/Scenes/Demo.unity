@@ -251,11 +251,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &665392280 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5580564452631325157, guid: 4a8dad407b5a8c046ac8ddbe855d8a2e, type: 3}
-  m_PrefabInstance: {fileID: 959995121}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &810748442
 GameObject:
   m_ObjectHideFlags: 0
@@ -336,41 +331,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5182546080225954531, guid: 4a8dad407b5a8c046ac8ddbe855d8a2e, type: 3}
-      propertyPath: _moveTarget
-      value: 
-      objectReference: {fileID: 665392280}
-    - target: {fileID: 5182546080225954531, guid: 4a8dad407b5a8c046ac8ddbe855d8a2e, type: 3}
-      propertyPath: _turnSmooth
-      value: 0.103
-      objectReference: {fileID: 0}
-    - target: {fileID: 5182546080225954531, guid: 4a8dad407b5a8c046ac8ddbe855d8a2e, type: 3}
-      propertyPath: _followTarget
-      value: 
-      objectReference: {fileID: 1405486588}
     - target: {fileID: 8625886656973028427, guid: 4a8dad407b5a8c046ac8ddbe855d8a2e, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 8656634641076936786, guid: 4a8dad407b5a8c046ac8ddbe855d8a2e, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8656634641076936786, guid: 4a8dad407b5a8c046ac8ddbe855d8a2e, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.56410265
-      objectReference: {fileID: 0}
-    - target: {fileID: 8656634641076936786, guid: 4a8dad407b5a8c046ac8ddbe855d8a2e, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8656634641076936786, guid: 4a8dad407b5a8c046ac8ddbe855d8a2e, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.8257047
-      objectReference: {fileID: 0}
-    - target: {fileID: 8656634641076936786, guid: 4a8dad407b5a8c046ac8ddbe855d8a2e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -111.32
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -571,8 +534,8 @@ MonoBehaviour:
   m_ShowCameraFrustum: 1
   m_IgnoreTimeScale: 0
   m_WorldUpOverride: {fileID: 0}
-  m_UpdateMethod: 2
-  m_BlendUpdateMethod: 0
+  m_UpdateMethod: 0
+  m_BlendUpdateMethod: 1
   m_DefaultBlend:
     m_Style: 1
     m_Time: 2
