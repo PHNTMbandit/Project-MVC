@@ -13,6 +13,7 @@ namespace MVC.Player
         private GameObject _bulletPrefab;
 
         private Camera _camera;
+        private float _turnSmoothVelocity;
 
         private void Awake()
         {
@@ -21,7 +22,8 @@ namespace MVC.Player
 
         public void Aim()
         {
-            _aimingTarget.localEulerAngles = new(0, _camera.transform.localEulerAngles.y, 0);
+            float angle = Mathf.SmoothDampAngle(_aimingTarget.eulerAngles.y, _camera.transform.eulerAngles.y, ref _turnSmoothVelocity, 0.1f);
+            _aimingTarget.rotation = Quaternion.Euler(0, angle, 0);
         }
 
         public void Shoot()
