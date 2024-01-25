@@ -2,7 +2,7 @@ namespace MVC.Player.StateMachine.SuperStates
 {
     public class PlayerInAirState : PlayerState
     {
-        public PlayerInAirState(PlayerStateController stateController) : base(stateController)
+        public PlayerInAirState(PlayerStateController stateController, string stateAnimationName) : base(stateController, stateAnimationName)
         {
         }
 
@@ -18,17 +18,6 @@ namespace MVC.Player.StateMachine.SuperStates
             base.OnFixedUpdate();
 
             stateController.PlayerJump.FasterFall();
-            stateController.PlayerMovement.Move(stateController.InputReader.MoveInput);
-        }
-
-        public override void OnUpdate()
-        {
-            base.OnUpdate();
-
-            if (stateController.PlayerJump.IsGrounded())
-            {
-                stateController.StateMachine.ChangeState(stateController.GroundedState);
-            }
         }
     }
 }

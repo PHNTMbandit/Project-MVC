@@ -8,8 +8,10 @@ namespace MVC.Input
     public class InputReader : ScriptableObject, GameControls.IGameplayActions
     {
         public GameControls GameControls { get; private set; }
+        public bool AimInput { get; private set; }
         public bool JumpInput { get; private set; }
         public bool ShootInput { get; private set; }
+        public bool SprintInput { get; private set; }
         public Vector2 LookInput { get; private set; }
         public Vector2 MoveInput { get; private set; }
 
@@ -31,6 +33,18 @@ namespace MVC.Input
         private void OnDisable()
         {
             DisableGameplayInput();
+        }
+
+        public void OnAim(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+            {
+                AimInput = true;
+            }
+            else if (context.canceled)
+            {
+                AimInput = false;
+            }
         }
 
         public void OnJump(InputAction.CallbackContext context)
@@ -66,6 +80,18 @@ namespace MVC.Input
             else if (context.canceled)
             {
                 ShootInput = false;
+            }
+        }
+
+        public void OnSprint(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+            {
+                SprintInput = true;
+            }
+            else if (context.canceled)
+            {
+                SprintInput = false;
             }
         }
 

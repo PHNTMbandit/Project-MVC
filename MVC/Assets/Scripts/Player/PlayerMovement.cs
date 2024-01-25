@@ -10,33 +10,29 @@ namespace MVC.Player
         [BoxGroup("Settings"), Range(0, 100), SerializeField]
         private float _moveSpeed;
 
-        private Camera _camera;
+        [BoxGroup("Settings"), Range(0, 1), SerializeField]
+        private float _turnSmooth;
+
+        [FoldoutGroup("References"), SerializeField]
+        private Transform _followTarget, _moveTarget;
+
         private Rigidbody _rb;
-        private Vector3 _moveDirection;
+        private float _turnSmoothVelocity;
 
         private void Awake()
         {
-            _camera = Camera.main;
             _rb = GetComponent<Rigidbody>();
-        }
-
-        private void Update()
-        {
-            transform.localRotation = Quaternion.Euler(0, _camera.transform.localEulerAngles.y, 0);
         }
 
         public void Move(Vector2 input)
         {
-            _moveDirection = transform.forward * input.y + transform.right * input.x;
-            _rb.AddForce(_moveSpeed * _moveDirection.normalized, ForceMode.Force);
+            Vector3 direction = new Vector3(input.x, 0, input.y).normalized;
+            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + _followTarget.eulerAngles.y;
+            float angle = Mathf.SmoothDampAngle(_moveTarget.eulerAngles.y, targetAngle, ref _turnSmoothVelocity, _turnSmooth);
+            _moveTarget.rotation = Quaternion.Euler(0, angle, 0);
 
-            Vector3 flatVelocity = new(_rb.velocity.x, 0, _rb.velocity.z);
-
-            if (flatVelocity.magnitude > _moveSpeed)
-            {
-                Vector3 limitedVelocity = flatVelocity.normalized * _moveSpeed;
-                _rb.velocity = new(limitedVelocity.x, _rb.velocity.y, limitedVelocity.z);
-            }
+            Vector3 moveDirection = Quaternion.Euler(0, targetAngle, 0) * Vector3.forward;
+            _rb.AddForce(_moveSpeed * moveDirection, ForceMode.Force);
         }
     }
 }

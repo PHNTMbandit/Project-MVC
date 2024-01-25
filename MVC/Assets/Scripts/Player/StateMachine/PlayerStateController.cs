@@ -14,8 +14,10 @@ namespace MVC.Player.StateMachine
         [field: FoldoutGroup("References"), SerializeField]
         public InputReader InputReader { get; private set; }
 
+        public Animator Animator { get; private set; }
         public PlayerStateMachine StateMachine { get; private set; }
-        public PlayerGroundedState GroundedState { get; private set; }
+        public PlayerIdleState IdleState { get; private set; }
+        public PlayerWalkState WalkState { get; private set; }
         public PlayerInAirState InAirState { get; private set; }
         public PlayerJump PlayerJump { get; private set; }
         public PlayerMovement PlayerMovement { get; private set; }
@@ -24,9 +26,11 @@ namespace MVC.Player.StateMachine
         private void Awake()
         {
             StateMachine = new();
-            GroundedState = new(this);
-            InAirState = new(this);
+            IdleState = new(this, "idle");
+            WalkState = new(this, "walking");
+            InAirState = new(this, "jumping");
 
+            Animator = GetComponentInChildren<Animator>();
             PlayerJump = GetComponent<PlayerJump>();
             PlayerMovement = GetComponent<PlayerMovement>();
             PlayerShoot = GetComponent<PlayerShoot>();
@@ -36,7 +40,7 @@ namespace MVC.Player.StateMachine
         {
             Cursor.visible = false;
 
-            StateMachine.Initialise(GroundedState);
+            StateMachine.Initialise(IdleState);
         }
 
         private void Update()
