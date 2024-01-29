@@ -19,6 +19,7 @@ namespace MVC.Player.StateMachine
         public PlayerAimState AimState { get; private set; }
         public PlayerIdleState IdleState { get; private set; }
         public PlayerInAirState InAirState { get; private set; }
+        public PlayerShootState ShootState { get; private set; }
         public PlayerWalkState WalkState { get; private set; }
         public PlayerJump PlayerJump { get; private set; }
         public PlayerMove PlayerMove { get; private set; }
@@ -30,9 +31,10 @@ namespace MVC.Player.StateMachine
             AimState = new(this, "aiming");
             IdleState = new(this, "idle");
             InAirState = new(this, "jumping");
+            ShootState = new(this, "shooting");
             WalkState = new(this, "walking");
 
-            Animator = GetComponentInChildren<Animator>();
+            Animator = GetComponent<Animator>();
             PlayerJump = GetComponent<PlayerJump>();
             PlayerMove = GetComponent<PlayerMove>();
             PlayerShoot = GetComponent<PlayerShoot>();

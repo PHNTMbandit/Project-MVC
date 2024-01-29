@@ -2,15 +2,15 @@ using UnityEngine;
 
 namespace MVC.Player.StateMachine.SuperStates
 {
-    public class PlayerAimState : PlayerGroundedState
+    public class PlayerShootState : PlayerGroundedState
     {
-        public PlayerAimState(PlayerStateController stateController, string stateAnimationName) : base(stateController, stateAnimationName)
+        public PlayerShootState(PlayerStateController stateController, string stateAnimationName) : base(stateController, stateAnimationName)
         {
         }
 
         public override void OnUpdate()
         {
-            if (!stateController.InputReader.AimInput)
+            if (!stateController.InputReader.ShootInput)
             {
                 stateController.StateMachine.ChangeState(stateController.IdleState);
             }
@@ -20,7 +20,6 @@ namespace MVC.Player.StateMachine.SuperStates
         {
             base.OnFixedUpdate();
 
-            stateController.PlayerShoot.Aim();
             stateController.PlayerMove.Move(Vector2.zero, 0);
         }
     }

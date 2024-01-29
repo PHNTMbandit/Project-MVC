@@ -19,7 +19,7 @@ namespace MVC.Player.StateMachine.SuperStates
 
             if (stateController.InputReader.ShootInput)
             {
-                stateController.PlayerShoot.Shoot();
+                stateController.StateMachine.ChangeState(stateController.ShootState);
             }
 
             if (!stateController.PlayerJump.IsGrounded())
