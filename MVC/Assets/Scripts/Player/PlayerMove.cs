@@ -5,12 +5,12 @@ namespace MVC.Player
 {
     [RequireComponent(typeof(Rigidbody))]
     [AddComponentMenu("Player/Player Movement")]
-    public class PlayerMovement : MonoBehaviour
+    public class PlayerMove : MonoBehaviour
     {
-        [BoxGroup("Settings"), Range(0, 100), SerializeField]
+        [BoxGroup("Settings"), SerializeField, Range(0, 100)]
         private float _moveSpeed;
 
-        [BoxGroup("Settings"), Range(0, 1), SerializeField]
+        [BoxGroup("Turn"), Range(0, 1), SerializeField]
         private float _turnSmooth;
 
         [FoldoutGroup("References"), SerializeField]

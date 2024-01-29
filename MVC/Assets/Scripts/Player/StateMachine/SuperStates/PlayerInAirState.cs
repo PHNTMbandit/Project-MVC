@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace MVC.Player.StateMachine.SuperStates
 {
     public class PlayerInAirState : PlayerState
@@ -20,8 +22,10 @@ namespace MVC.Player.StateMachine.SuperStates
         {
             base.OnFixedUpdate();
 
-            stateController.PlayerJump.FasterFall();
-            stateController.PlayerMovement.Move(stateController.InputReader.MoveInput);
+            if (stateController.InputReader.MoveInput != Vector2.zero)
+            {
+                stateController.PlayerMove.Move(stateController.InputReader.MoveInput);
+            }
         }
     }
 }
