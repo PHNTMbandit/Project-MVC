@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace MVC.Player.StateMachine.SuperStates
 {
     public class PlayerInAirState : PlayerState
@@ -6,18 +8,24 @@ namespace MVC.Player.StateMachine.SuperStates
         {
         }
 
-        public override void OnEnter()
+        public override void OnUpdate()
         {
-            base.OnEnter();
+            base.OnUpdate();
 
-            stateController.InputReader.onJump.RemoveAllListeners();
+            if (stateController.PlayerJump.IsGrounded())
+            {
+                stateController.StateMachine.ChangeState(stateController.IdleState);
+            }
         }
 
         public override void OnFixedUpdate()
         {
             base.OnFixedUpdate();
 
-            stateController.PlayerJump.FasterFall();
+            if (stateController.InputReader.MoveInput != Vector2.zero)
+            {
+                stateController.PlayerMove.Move(stateController.InputReader.MoveInput);
+            }
         }
     }
 }

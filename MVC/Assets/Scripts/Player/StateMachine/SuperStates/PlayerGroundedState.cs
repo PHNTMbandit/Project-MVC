@@ -8,13 +8,6 @@ namespace MVC.Player.StateMachine.SuperStates
         {
         }
 
-        public override void OnEnter()
-        {
-            base.OnEnter();
-
-            stateController.InputReader.onJump.AddListener(stateController.PlayerJump.Jump);
-        }
-
         public override void OnUpdate()
         {
             base.OnUpdate();
@@ -27,6 +20,11 @@ namespace MVC.Player.StateMachine.SuperStates
             if (stateController.InputReader.ShootInput)
             {
                 stateController.PlayerShoot.Shoot();
+            }
+
+            if (!stateController.PlayerJump.IsGrounded())
+            {
+                stateController.StateMachine.ChangeState(stateController.InAirState);
             }
         }
     }

@@ -6,7 +6,7 @@ using UnityEngine;
 namespace MVC.Player.StateMachine
 {
     [RequireComponent(typeof(PlayerJump))]
-    [RequireComponent(typeof(PlayerMovement))]
+    [RequireComponent(typeof(PlayerMove))]
     [RequireComponent(typeof(PlayerShoot))]
     [AddComponentMenu("Player/Player State Controller")]
     public class PlayerStateController : MonoBehaviour
@@ -21,7 +21,7 @@ namespace MVC.Player.StateMachine
         public PlayerInAirState InAirState { get; private set; }
         public PlayerWalkState WalkState { get; private set; }
         public PlayerJump PlayerJump { get; private set; }
-        public PlayerMovement PlayerMovement { get; private set; }
+        public PlayerMove PlayerMove { get; private set; }
         public PlayerShoot PlayerShoot { get; private set; }
 
         private void Awake()
@@ -34,7 +34,7 @@ namespace MVC.Player.StateMachine
 
             Animator = GetComponentInChildren<Animator>();
             PlayerJump = GetComponent<PlayerJump>();
-            PlayerMovement = GetComponent<PlayerMovement>();
+            PlayerMove = GetComponent<PlayerMove>();
             PlayerShoot = GetComponent<PlayerShoot>();
         }
 

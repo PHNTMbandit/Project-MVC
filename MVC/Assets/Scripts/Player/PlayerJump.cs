@@ -7,7 +7,7 @@ namespace MVC.Player
     [AddComponentMenu("Player/Player Jump")]
     public class PlayerJump : MonoBehaviour
     {
-        [BoxGroup("Settings"), Range(0, 50), SerializeField]
+        [BoxGroup("Jump"), Range(0, 50), SerializeField]
         private float _jumpForce, _gravityScale;
 
         [BoxGroup("Ground Check"), Range(0, 10), SerializeField]
@@ -23,28 +23,23 @@ namespace MVC.Player
             _rb = GetComponent<Rigidbody>();
         }
 
-        private void Update()
+        private void FixedUpdate()
         {
-            _rb.useGravity = !IsGrounded();
+            SetGravityScale();
         }
-
-        public bool IsGrounded() => Physics.Raycast(_rb.position, Vector3.down, _groundCheckDistance, _groundLayers);
 
         public void Jump()
         {
-            if (IsGrounded())
-            {
-                _rb.AddForce(_rb.transform.up * _jumpForce, ForceMode.Impulse);
-            }
+            _rb.AddForce(_rb.transform.up * _jumpForce, ForceMode.Impulse);
         }
 
-        public void FasterFall()
+        public void SetGravityScale()
         {
-            if (_rb.velocity.y < 0)
-            {
-                _rb.AddForce(-_gravityScale * Vector3.up, ForceMode.Acceleration);
-            }
+            Vector3 gravity = -9.81f * _gravityScale * Vector3.up;
+            _rb.AddForce(gravity, ForceMode.Acceleration);
         }
+
+        public bool IsGrounded() => Physics.Raycast(transform.position, Vector3.down, _groundCheckDistance, _groundLayers);
 
         private void OnDrawGizmosSelected()
         {

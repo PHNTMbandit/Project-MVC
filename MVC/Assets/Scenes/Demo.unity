@@ -150,7 +150,7 @@ Transform:
   m_GameObject: {fileID: 72816639}
   serializedVersion: 2
   m_LocalRotation: {x: 0.19626993, y: -0.13575764, z: 0.027448883, w: 0.97071856}
-  m_LocalPosition: {x: 5.769863, y: 0.60464704, z: 3.787148}
+  m_LocalPosition: {x: 2.425547, y: 1.3006471, z: 2.4819083}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -402,7 +402,7 @@ MonoBehaviour:
   - {fileID: 72816643}
   - {fileID: 1381584637}
   m_Instructions:
-  - m_FullHash: 1144368822
+  - m_FullHash: -1347012201
     m_VirtualCamera: {fileID: 72816643}
     m_ActivateAfter: 0
     m_MinDuration: 0
@@ -410,7 +410,7 @@ MonoBehaviour:
     m_VirtualCamera: {fileID: 1381584637}
     m_ActivateAfter: 0
     m_MinDuration: 0
-  - m_FullHash: -2010423537
+  - m_FullHash: 81563449
     m_VirtualCamera: {fileID: 1381584637}
     m_ActivateAfter: 0
     m_MinDuration: 0
@@ -427,10 +427,16 @@ MonoBehaviour:
   m_ParentHash:
   - m_Hash: 1432961145
     m_ParentHash: 756556552
-  - m_Hash: -2010423537
+  - m_Hash: -1347012201
     m_ParentHash: 756556552
-  - m_Hash: 1144368822
+  - m_Hash: -2076775170
     m_ParentHash: 756556552
+  - m_Hash: 81563449
+    m_ParentHash: 756556552
+  - m_Hash: -48481835
+    m_ParentHash: 81563449
+  - m_Hash: 2055075245
+    m_ParentHash: 81563449
 --- !u!114 &553335839
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -446,11 +452,6 @@ MonoBehaviour:
   _rotateSpeed: 1.5
   _followTarget: {fileID: 1405486588}
   _inputReader: {fileID: 11400000, guid: fe1a79578ad7d184ab9d378275ab8f3d, type: 2}
---- !u!4 &665392280 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5580564452631325157, guid: 4a8dad407b5a8c046ac8ddbe855d8a2e, type: 3}
-  m_PrefabInstance: {fileID: 959995121}
-  m_PrefabAsset: {fileID: 0}
 --- !u!95 &665392281 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 1341449865547543430, guid: 4a8dad407b5a8c046ac8ddbe855d8a2e, type: 3}
@@ -571,7 +572,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1858822221053267292, guid: 4a8dad407b5a8c046ac8ddbe855d8a2e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.502
+      value: 1.198
       objectReference: {fileID: 0}
     - target: {fileID: 1858822221053267292, guid: 4a8dad407b5a8c046ac8ddbe855d8a2e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -605,10 +606,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3910591357064986997, guid: 4a8dad407b5a8c046ac8ddbe855d8a2e, type: 3}
-      propertyPath: _aimingTarget
-      value: 
-      objectReference: {fileID: 665392280}
     - target: {fileID: 8625886656973028427, guid: 4a8dad407b5a8c046ac8ddbe855d8a2e, type: 3}
       propertyPath: m_Name
       value: Player
@@ -817,7 +814,7 @@ MonoBehaviour:
   m_ShowCameraFrustum: 1
   m_IgnoreTimeScale: 0
   m_WorldUpOverride: {fileID: 0}
-  m_UpdateMethod: 0
+  m_UpdateMethod: 2
   m_BlendUpdateMethod: 1
   m_DefaultBlend:
     m_Style: 1
@@ -948,7 +945,7 @@ Transform:
   m_GameObject: {fileID: 1354186274}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0.8257047, z: 0, w: 0.56410265}
-  m_LocalPosition: {x: 8.585235, y: 2.036, z: -2.3920312}
+  m_LocalPosition: {x: 8.439804, y: 3.072, z: -2.0194058}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1020,7 +1017,7 @@ Transform:
   m_GameObject: {fileID: 1381584636}
   serializedVersion: 2
   m_LocalRotation: {x: 0.19626993, y: -0.13575764, z: 0.027448883, w: 0.97071856}
-  m_LocalPosition: {x: 5.769863, y: 0.60464704, z: 3.787148}
+  m_LocalPosition: {x: 5.6244326, y: 1.640647, z: 4.1597733}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1213,8 +1210,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damping: {x: 0.1, y: 0.5, z: 2}
-  ShoulderOffset: {x: 1.1, y: -0.4, z: 0}
-  VerticalArmLength: 0.66
+  ShoulderOffset: {x: 1.5, y: -0.4, z: 0}
+  VerticalArmLength: 1
   CameraSide: 1
   CameraDistance: 6.5
   CameraCollisionFilter:
@@ -1417,7 +1414,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 2ab8149ec4775284bada96c1b85b4a09, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
