@@ -12,14 +12,13 @@ namespace MVC.Player.StateMachine.SuperStates
         {
             base.OnUpdate();
 
+            stateController.PlayerAim.Look();
+
+            stateController.Animator.SetBool("shooting", stateController.InputReader.ShootInput);
+
             if (stateController.InputReader.AimInput)
             {
                 stateController.StateMachine.ChangeState(stateController.AimState);
-            }
-
-            if (stateController.InputReader.ShootInput)
-            {
-                stateController.PlayerShoot.Shoot();
             }
 
             if (!stateController.PlayerJump.IsGrounded())

@@ -3,10 +3,12 @@ using UnityEngine;
 
 namespace MVC.Player
 {
-    [RequireComponent(typeof(Rigidbody))]
     [AddComponentMenu("Player/Player Jump")]
     public class PlayerJump : MonoBehaviour
     {
+        [field: BoxGroup("Move"), SerializeField, Range(0, 100)]
+        public float AirMoveSpeed { get; private set; }
+
         [BoxGroup("Jump"), Range(0, 50), SerializeField]
         private float _jumpForce, _gravityScale;
 
@@ -20,7 +22,7 @@ namespace MVC.Player
 
         private void Awake()
         {
-            _rb = GetComponent<Rigidbody>();
+            _rb = GetComponentInParent<Rigidbody>();
         }
 
         private void FixedUpdate()

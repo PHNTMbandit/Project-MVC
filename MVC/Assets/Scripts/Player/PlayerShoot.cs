@@ -1,34 +1,27 @@
+using MVC.Factories;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace MVC.Player
 {
+    [RequireComponent(typeof(Animator))]
     [AddComponentMenu("Player/Player Shoot")]
     public class PlayerShoot : MonoBehaviour
     {
+        [BoxGroup("Settings"), SerializeField, Range(0, 100)]
+        private float _velocity;
+
         [BoxGroup("References"), SerializeField]
-        private Transform _aimingTarget;
+        private Transform _shootingOrigin;
 
         [BoxGroup("References"), SerializeField]
         private GameObject _bulletPrefab;
 
-        private Camera _camera;
-        private float _turnSmoothVelocity;
-
-        private void Awake()
-        {
-            _camera = Camera.main;
-        }
-
-        public void Aim()
-        {
-            float angle = Mathf.SmoothDampAngle(_aimingTarget.eulerAngles.y, _camera.transform.eulerAngles.y, ref _turnSmoothVelocity, 0.1f);
-            _aimingTarget.rotation = Quaternion.Euler(0, angle, 0);
-        }
+        private readonly ProjectileFactory _projectileFactory = new();
 
         public void Shoot()
         {
-            print("shooting");
+            _projectileFactory.GetProjectile(_bulletPrefab, _shootingOrigin, _velocity);
         }
     }
 }

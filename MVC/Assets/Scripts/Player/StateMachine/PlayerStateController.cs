@@ -5,6 +5,7 @@ using UnityEngine;
 
 namespace MVC.Player.StateMachine
 {
+    [RequireComponent(typeof(PlayerAim))]
     [RequireComponent(typeof(PlayerJump))]
     [RequireComponent(typeof(PlayerMove))]
     [RequireComponent(typeof(PlayerShoot))]
@@ -20,6 +21,7 @@ namespace MVC.Player.StateMachine
         public PlayerIdleState IdleState { get; private set; }
         public PlayerInAirState InAirState { get; private set; }
         public PlayerWalkState WalkState { get; private set; }
+        public PlayerAim PlayerAim { get; private set; }
         public PlayerJump PlayerJump { get; private set; }
         public PlayerMove PlayerMove { get; private set; }
         public PlayerShoot PlayerShoot { get; private set; }
@@ -32,7 +34,8 @@ namespace MVC.Player.StateMachine
             InAirState = new(this, "jumping");
             WalkState = new(this, "walking");
 
-            Animator = GetComponentInChildren<Animator>();
+            Animator = GetComponent<Animator>();
+            PlayerAim = GetComponent<PlayerAim>();
             PlayerJump = GetComponent<PlayerJump>();
             PlayerMove = GetComponent<PlayerMove>();
             PlayerShoot = GetComponent<PlayerShoot>();
