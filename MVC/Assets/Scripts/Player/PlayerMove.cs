@@ -25,6 +25,11 @@ namespace MVC.Player
             _animator = GetComponent<Animator>();
         }
 
+        private void Update()
+        {
+            _animator.SetFloat("speed", Mathf.Clamp(_rb.velocity.magnitude, 0.01f, 100));
+        }
+
         public void Move(Vector2 input, float moveSpeed)
         {
             Vector3 direction = new Vector3(input.x, 0, input.y).normalized;
@@ -34,8 +39,6 @@ namespace MVC.Player
 
             Vector3 moveDirection = Quaternion.Euler(0, targetAngle, 0) * Vector3.forward;
             _rb.AddForce(moveSpeed * input.magnitude * moveDirection, ForceMode.Force);
-
-            _animator.SetFloat("speed", Mathf.Abs(_rb.velocity.magnitude));
         }
     }
 }
