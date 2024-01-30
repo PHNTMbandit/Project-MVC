@@ -26,6 +26,11 @@ namespace MVC.Player.StateMachine.SuperStates
         {
             base.OnUpdate();
 
+            if (stateController.InputReader.ShootInput)
+            {
+                stateController.PlayerShoot.ShootSeekable();
+            }
+
             if (stateController.InputReader.MoveInput != Vector2.zero)
             {
                 stateController.StateMachine.ChangeState(stateController.WalkState);

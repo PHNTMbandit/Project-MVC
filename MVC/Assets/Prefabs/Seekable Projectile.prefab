@@ -13,10 +13,11 @@ GameObject:
   - component: {fileID: 4644325438912687646}
   - component: {fileID: 2903637304076793959}
   - component: {fileID: 3285045773788089227}
+  - component: {fileID: 6601240628946093183}
   - component: {fileID: 2337146425098474599}
   - component: {fileID: -5646668175604671283}
   m_Layer: 7
-  m_Name: Projectile
+  m_Name: Seekable Projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -135,6 +136,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
+--- !u!114 &6601240628946093183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4449568415435313450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29308c1c4f8a82c44b207e3863a00669, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: 100
 --- !u!114 &2337146425098474599
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,7 +161,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19da74c743a5c2d48a7bd2255abbd85a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _velocity: 45
+  _velocity: 15
   _damage: 5
 --- !u!114 &-5646668175604671283
 MonoBehaviour:
