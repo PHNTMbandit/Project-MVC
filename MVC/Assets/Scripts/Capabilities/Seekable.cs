@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace MVC.Capabilities
 {
@@ -8,9 +7,6 @@ namespace MVC.Capabilities
     {
         [Range(0, 10), SerializeField]
         private float _speed;
-
-        [SerializeField]
-        private UnityEvent _onSeeked;
 
         private Transform _target;
         private bool _isFollowing = false;
@@ -29,15 +25,10 @@ namespace MVC.Capabilities
             }
         }
 
-        private void OnTriggerEnter(Collider other)
+        public void SetTarget(Transform target)
         {
-            if (other.gameObject != null)
-            {
-                _isFollowing = true;
-                _target = gameObject.transform;
-
-                _onSeeked?.Invoke();
-            }
+            _target = target;
+            _isFollowing = true;
         }
     }
 }
