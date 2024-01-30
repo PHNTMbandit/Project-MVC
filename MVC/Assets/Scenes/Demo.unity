@@ -652,6 +652,10 @@ PrefabInstance:
       propertyPath: m_ApplyRootMotion
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8535840898478148830, guid: 4a8dad407b5a8c046ac8ddbe855d8a2e, type: 3}
+      propertyPath: _groundCheckDistance
+      value: 0.7
+      objectReference: {fileID: 0}
     - target: {fileID: 8625886656973028427, guid: 4a8dad407b5a8c046ac8ddbe855d8a2e, type: 3}
       propertyPath: m_Name
       value: Player
