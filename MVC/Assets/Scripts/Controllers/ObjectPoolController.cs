@@ -90,9 +90,9 @@ namespace MVC.Controllers
 
             GameObject objectToSpawn = poolDictionary[tag].Dequeue();
 
-            objectToSpawn.SetActive(true);
-            objectToSpawn.transform.SetPositionAndRotation(position, rotation);
             objectToSpawn.transform.SetParent(parent);
+            objectToSpawn.transform.SetPositionAndRotation(position, rotation);
+            objectToSpawn.SetActive(true);
 
             poolDictionary[tag].Enqueue(objectToSpawn);
 

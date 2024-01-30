@@ -26,7 +26,6 @@ namespace MVC.Projectiles
         {
             _rb.velocity = Vector3.zero;
             _rb.angularVelocity = Vector3.zero;
-            transform.position = Vector3.zero;
             transform.SetParent(ObjectPoolController.Instance.transform);
             gameObject.SetActive(false);
         }
