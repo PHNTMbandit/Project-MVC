@@ -12,6 +12,8 @@ namespace MVC.Player.StateMachine.SuperStates
         {
             base.OnUpdate();
 
+            stateController.PlayerAim.Look();
+
             if (stateController.InputReader.AimInput)
             {
                 stateController.StateMachine.ChangeState(stateController.AimState);
