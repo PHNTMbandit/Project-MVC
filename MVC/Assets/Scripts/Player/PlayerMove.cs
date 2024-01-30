@@ -35,7 +35,7 @@ namespace MVC.Player
             Vector3 moveDirection = Quaternion.Euler(0, targetAngle, 0) * Vector3.forward;
             _rb.AddForce(moveSpeed * input.magnitude * moveDirection, ForceMode.Force);
 
-            _animator.SetFloat("speed", _rb.velocity.magnitude);
+            _animator.SetFloat("speed", Mathf.Abs(_rb.velocity.magnitude));
         }
     }
 }
