@@ -12,6 +12,11 @@ namespace MVC.Player.StateMachine.SuperStates
         {
             base.OnUpdate();
 
+            if (stateController.InputReader.ShootInput)
+            {
+                stateController.PlayerShoot.ShootProjectile();
+            }
+
             if (!stateController.InputReader.AimInput)
             {
                 stateController.StateMachine.ChangeState(stateController.IdleState);

@@ -55,13 +55,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4356813598454918795}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0.8257047, z: 0, w: 0.56410265}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0, y: 1.274, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1858822221053267292}
-  m_LocalEulerAnglesHint: {x: 0, y: -111.32, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5885797291139145379
 GameObject:
   m_ObjectHideFlags: 0
@@ -1436,7 +1436,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: bf17d117a2f1bf04ca3b13a9e2968d99, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
@@ -1458,10 +1458,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHealth: 100
   _currentHealth: 100
-  OnHealthChanged:
+  _onHealthChanged:
     m_PersistentCalls:
       m_Calls: []
-  onZeroHealth:
+  _onZeroHealth:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &4706722362950972288
@@ -1522,7 +1522,7 @@ MonoBehaviour:
   <AirMoveSpeed>k__BackingField: 45
   _jumpForce: 28
   _gravityScale: 7
-  _groundCheckDistance: 0.35
+  _groundCheckDistance: 0.7
   _groundLayers:
     serializedVersion: 2
     m_Bits: 65
@@ -1553,9 +1553,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa4a2a3530616e346a415bd38c95a63a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _velocity: 35
+  _targetingRange: 70
+  _projectile: {fileID: 2337146425098474599, guid: 1a0dc79d7e222824fba33cbbf41270ac, type: 3}
+  _seekableProjectile: {fileID: 6601240628946093183, guid: a5df6096402808746973c912ce04705f, type: 3}
+  _lookingAim: {fileID: 8656634641076936786}
   _shootingOrigin: {fileID: 3253044226228037279}
-  _bulletPrefab: {fileID: 4449568415435313450, guid: a5df6096402808746973c912ce04705f, type: 3}
+  _bulletPrefab: {fileID: 6601240628946093183, guid: a5df6096402808746973c912ce04705f, type: 3}
+  targets:
+  - {fileID: 0}
 --- !u!114 &5793640458376860615
 MonoBehaviour:
   m_ObjectHideFlags: 0
