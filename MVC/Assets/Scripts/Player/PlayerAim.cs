@@ -23,8 +23,9 @@ namespace MVC.Player
 
         public void Aim()
         {
-            float angle = Mathf.SmoothDampAngle(_aimingTarget.eulerAngles.y, _camera.transform.eulerAngles.y, ref _turnSmoothVelocity, 0.1f);
-            _aimingTarget.rotation = Quaternion.Euler(0, angle, 0);
+            float angleX = Mathf.SmoothDampAngle(_aimingTarget.eulerAngles.x, _camera.transform.eulerAngles.x, ref _turnSmoothVelocity, 0.1f);
+            float angleY = Mathf.SmoothDampAngle(_aimingTarget.eulerAngles.y, _camera.transform.eulerAngles.y, ref _turnSmoothVelocity, 0.1f);
+            _aimingTarget.rotation = Quaternion.Euler(angleX, angleY, 0);
         }
 
         public void Look()
