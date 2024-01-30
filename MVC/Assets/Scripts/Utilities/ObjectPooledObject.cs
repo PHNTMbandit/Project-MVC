@@ -1,6 +1,7 @@
 using MVC.Controllers;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace MVC.Projectiles
 {
@@ -12,6 +13,9 @@ namespace MVC.Projectiles
         [FoldoutGroup("References"), SerializeField]
         private Rigidbody _rb;
 
+        [SerializeField]
+        private UnityEvent _onDisabled;
+
         private void OnEnable()
         {
             Invoke(nameof(Disable), _lifetime);
@@ -22,12 +26,14 @@ namespace MVC.Projectiles
             CancelInvoke();
         }
 
-        private void Disable()
+        public void Disable()
         {
             _rb.velocity = Vector3.zero;
             _rb.angularVelocity = Vector3.zero;
             transform.SetParent(ObjectPoolController.Instance.transform);
             gameObject.SetActive(false);
+
+            _onDisabled.Invoke();
         }
     }
 }
