@@ -10,6 +10,9 @@ namespace MVC.UI
     [AddComponentMenu("UI/Targets/Health UI Target")]
     public class HealthUITarget : MonoBehaviour
     {
+        [BoxGroup("Settings"), SerializeField]
+        private Vector3 _offset;
+
         [BoxGroup("References"), SerializeField]
         private Canvas _HUD;
 
@@ -33,7 +36,7 @@ namespace MVC.UI
 
         private void Start()
         {
-            _healthBarInstance = _worldUIFactory.GetUI(_healthBarPrefab, transform.position, _HUD.transform);
+            _healthBarInstance = _worldUIFactory.GetUI(_healthBarPrefab, transform, _HUD.transform, _offset);
             _healthBarInstance.Initialise(_target);
         }
 

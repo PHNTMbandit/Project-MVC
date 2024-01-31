@@ -394,6 +394,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e97231fee131194186e7b302f2ffb11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _offset: {x: 0, y: 2, z: 0}
   _HUD: {fileID: 888272508}
   _healthBarPrefab: {fileID: 6582461529048803790, guid: d14e253a4630f1f4daac0771adf81e73, type: 3}
 --- !u!1 &162377725
@@ -737,7 +738,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 162377726}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -747,7 +748,7 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 1
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: 71365421
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!224 &888272509
@@ -1690,7 +1691,7 @@ MonoBehaviour:
     Priority: 0
     IconType: 290000
     IconTexture: {fileID: 0}
-    IsIconRecursive: 1
+    IsIconRecursive: 0
     BackgroundType: 13000
     BackgroundTexture: {fileID: 0}
     IsBackgroundRecursive: 0
@@ -1881,6 +1882,18 @@ MonoBehaviour:
     Ordinal: 16
     Priority: 0
     IconType: 168000
+    IconTexture: {fileID: 0}
+    IsIconRecursive: 0
+    BackgroundType: 0
+    BackgroundTexture: {fileID: 0}
+    IsBackgroundRecursive: 0
+    IsHidden: 0
+  - Type: 0
+    Name: 
+    GameObject: {fileID: 918743264}
+    Ordinal: 17
+    Priority: 0
+    IconType: 114000
     IconTexture: {fileID: 0}
     IsIconRecursive: 0
     BackgroundType: 0
