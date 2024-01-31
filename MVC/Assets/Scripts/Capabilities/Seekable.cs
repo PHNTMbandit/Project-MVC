@@ -1,3 +1,4 @@
+using MVC.Controllers;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -29,8 +30,20 @@ namespace MVC.Capabilities
         {
             if (_isFollowing)
             {
-                Vector3 direction = (_target.transform.position - transform.position).normalized;
-                _rb.AddForce((direction * _speed) - _rb.velocity, ForceMode.Force);
+                if (_target != null)
+                {
+                    if (!_target.isActiveAndEnabled)
+                    {
+                        gameObject.SetActive(false);
+                        transform.SetParent(ObjectPoolController.Instance.transform);
+                    }
+                    else
+                    {
+                        Vector3 direction = (_target.transform.position - transform.position).normalized;
+                        _rb.AddForce((direction * _speed) - _rb.velocity, ForceMode.Force);
+                    }
+
+                }
             }
         }
 
