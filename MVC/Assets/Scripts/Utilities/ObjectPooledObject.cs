@@ -7,7 +7,7 @@ namespace MVC.Projectiles
 {
     public class ObjectPooledObject : MonoBehaviour
     {
-        [BoxGroup("Settings"), Range(0, 10), SerializeField]
+        [BoxGroup("Settings"), Range(0, 100), SuffixLabel("seconds"), SerializeField]
         private float _lifetime;
 
         [FoldoutGroup("References"), SerializeField]

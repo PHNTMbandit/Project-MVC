@@ -28,7 +28,7 @@ namespace MVC.Player.StateMachine.SuperStates
 
             if (stateController.InputReader.ShootInput)
             {
-                stateController.PlayerShoot.ShootSeekable();
+                stateController.PlayerShoot.Shoot();
             }
 
             if (stateController.InputReader.MoveInput != Vector2.zero)

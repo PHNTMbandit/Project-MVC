@@ -7,19 +7,15 @@ namespace MVC.Factories
 {
     public class ProjectileFactory
     {
-        public Projectile GetProjectile(Projectile projectilePrefab, Transform origin)
+        public Projectile GetProjectile(Projectile projectilePrefab, Transform origin, Targetable target)
         {
             Projectile projectile = ObjectPoolController.Instance.GetPooledObject(projectilePrefab.name, origin.position, Quaternion.identity, null).GetComponent<Projectile>();
             projectile.Launch(origin);
 
-            return projectile;
-        }
-
-        public Projectile GetSeekableProjectile(Seekable seekableProjectilePrefab, Transform origin, Transform target)
-        {
-            Projectile projectile = ObjectPoolController.Instance.GetPooledObject(seekableProjectilePrefab.name, origin.position, Quaternion.identity, null).GetComponent<Projectile>();
-            projectile.Launch(origin);
-            projectile.GetComponent<Seekable>().SetTarget(target);
+            if (target != null && projectile.TryGetComponent(out Seekable seekable))
+            {
+                seekable.SetTarget(target);
+            }
 
             return projectile;
         }

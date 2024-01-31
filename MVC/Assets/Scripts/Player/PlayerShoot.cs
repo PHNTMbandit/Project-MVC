@@ -11,20 +11,14 @@ namespace MVC.Player
     [AddComponentMenu("Player/Player Shoot")]
     public class PlayerShoot : MonoBehaviour
     {
-        [BoxGroup("Projectiles"), SerializeField]
+        [BoxGroup("Settings"), SerializeField]
         private Projectile _projectile;
-
-        [BoxGroup("Projectiles"), SerializeField]
-        private Seekable _seekableProjectile;
 
         [FoldoutGroup("References"), SerializeField]
         private CharacterDataController _characterDataController;
 
         [FoldoutGroup("References"), SerializeField]
         private Transform _lookingAim, _shootingOrigin;
-
-        [FoldoutGroup("References"), SerializeField]
-        private Seekable _bulletPrefab;
 
         public MeshRenderer[] targets;
 
@@ -39,28 +33,14 @@ namespace MVC.Player
             _characterData = _characterDataController.GetCharacterData(name);
         }
 
-        public void ShootProjectile()
-        {
-            if (Time.time >= _nextFireTime)
-            {
-                _nextFireTime = Time.time + 1f / _characterData.fireRate;
-
-                _projectileFactory.GetProjectile(_projectile, _shootingOrigin);
-            }
-        }
-
-        public void ShootSeekable()
+        public void Shoot()
         {
             if (Time.time >= _nextFireTime)
             {
                 _nextFireTime = Time.time + 1f / _characterData.fireRate;
 
                 Targetable target = EnemyTargeting.GetClosetTargetableToCentre(transform, targets, _characterData.targetingRange, _camera);
-
-                if (target != null)
-                {
-                    _projectileFactory.GetSeekableProjectile(_seekableProjectile, _shootingOrigin, target.transform);
-                }
+                _projectileFactory.GetProjectile(_projectile, _shootingOrigin, target);
             }
         }
     }

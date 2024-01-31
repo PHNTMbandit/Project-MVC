@@ -14,7 +14,7 @@ namespace MVC.Player.StateMachine.SuperStates
 
             if (stateController.InputReader.ShootInput)
             {
-                stateController.PlayerShoot.ShootProjectile();
+                stateController.PlayerShoot.Shoot();
             }
 
             if (!stateController.InputReader.AimInput)
