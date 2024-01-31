@@ -7,20 +7,28 @@ namespace MVC.UI
     {
         public Transform FollowTarget { get; private set; }
 
-        private Camera _camera;
+        private Camera _mainCamera;
+        private Canvas _HUDCanvas;
         private Vector2 _offset;
+        private RectTransform _rectTransform;
 
         private void Awake()
         {
-            _camera = Camera.main;
+            _mainCamera = Camera.main;
+
+            _rectTransform = GetComponent<RectTransform>();
+            _HUDCanvas = GameObject.FindGameObjectWithTag("HUD").GetComponent<Canvas>();
         }
 
         private void Update()
         {
-            Vector3 worldPosition = _camera.WorldToScreenPoint(FollowTarget.position + (Vector3)_offset);
-            if (worldPosition.z > 0)
+            var viewportPoint = _mainCamera.WorldToViewportPoint(FollowTarget.position + (Vector3)_offset);
+            var screenPoint = _HUDCanvas.worldCamera.ViewportToScreenPoint(viewportPoint);
+            RectTransformUtility.ScreenPointToWorldPointInRectangle(_rectTransform, screenPoint, _HUDCanvas.worldCamera, out Vector3 worldPoint);
+
+            if (viewportPoint.z > 0)
             {
-                transform.position = worldPosition;
+                _rectTransform.position = worldPoint;
             }
         }
 

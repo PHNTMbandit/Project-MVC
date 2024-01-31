@@ -2,6 +2,25 @@
   "characters": [
     {
       "name": "Barbarian",
+      "spritePath": "Sprites/barbarian",
+      "fireRate": 3.8,
+      "targetingRange": 70,
+      "moveSpeed": 65,
+      "jumpForce": 28,
+      "airMoveSpeed": 45
+    },
+    {
+      "name": "Druid",
+      "spritePath": "Sprites/druid",
+      "fireRate": 3.8,
+      "targetingRange": 70,
+      "moveSpeed": 65,
+      "jumpForce": 28,
+      "airMoveSpeed": 45
+    },
+    {
+      "name": "Engineer",
+      "spritePath": "Sprites/engineer",
       "fireRate": 3.8,
       "targetingRange": 70,
       "moveSpeed": 65,
@@ -10,6 +29,7 @@
     },
     {
       "name": "Knight",
+      "spritePath": "Sprites/knight",
       "fireRate": 3.8,
       "targetingRange": 70,
       "moveSpeed": 65,
@@ -18,6 +38,7 @@
     },
     {
       "name": "Mage",
+      "spritePath": "Sprites/mage",
       "fireRate": 3.8,
       "targetingRange": 70,
       "moveSpeed": 65,
@@ -26,6 +47,7 @@
     },
     {
       "name": "Rogue",
+      "spritePath": "Sprites/rogue",
       "fireRate": 3.8,
       "targetingRange": 70,
       "moveSpeed": 65,
