@@ -1458,10 +1458,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHealth: 100
   _currentHealth: 100
-  _onHealthChanged:
+  _healthBarPrefab: {fileID: 6582461529048803790, guid: d14e253a4630f1f4daac0771adf81e73, type: 3}
+  onHealthChanged:
     m_PersistentCalls:
       m_Calls: []
-  _onZeroHealth:
+  onZeroHealth:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &4706722362950972288
@@ -1552,15 +1553,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa4a2a3530616e346a415bd38c95a63a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _projectile: {fileID: 2337146425098474599, guid: 1a0dc79d7e222824fba33cbbf41270ac, type: 3}
-  _seekableProjectile: {fileID: 6601240628946093183, guid: a5df6096402808746973c912ce04705f, type: 3}
+  _projectile: {fileID: 2337146425098474599, guid: a5df6096402808746973c912ce04705f, type: 3}
   _characterDataController: {fileID: 11400000, guid: 1c1a503aa151ec14b80ee709d92bc8ef, type: 2}
   _lookingAim: {fileID: 8656634641076936786}
   _shootingOrigin: {fileID: 3253044226228037279}
-  _bulletPrefab: {fileID: 6601240628946093183, guid: a5df6096402808746973c912ce04705f, type: 3}
   targets:
-  - {fileID: 0}
-  - {fileID: 0}
   - {fileID: 0}
 --- !u!114 &5793640458376860615
 MonoBehaviour:
