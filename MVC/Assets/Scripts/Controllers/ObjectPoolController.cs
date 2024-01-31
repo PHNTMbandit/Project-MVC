@@ -22,8 +22,6 @@ namespace MVC.Controllers
 
         public Dictionary<string, Queue<GameObject>> poolDictionary;
 
-        #region Singleton
-
         public static ObjectPoolController Instance
         { get { return _instance; } }
 
@@ -39,12 +37,7 @@ namespace MVC.Controllers
             {
                 _instance = this;
             }
-        }
 
-        #endregion Singleton
-
-        private void Start()
-        {
             poolDictionary = new Dictionary<string, Queue<GameObject>>();
 
             foreach (Pool pool in pools)
@@ -62,6 +55,24 @@ namespace MVC.Controllers
             }
         }
 
+        public GameObject GetPooledObject(string tag, Vector3 position)
+        {
+            if (!poolDictionary.ContainsKey(tag))
+            {
+                Debug.LogWarning($"Pool with tag {tag} doesn't exist.");
+                return null;
+            }
+
+            GameObject objectToSpawn = poolDictionary[tag].Dequeue();
+
+            objectToSpawn.transform.position = position;
+            objectToSpawn.SetActive(true);
+
+            poolDictionary[tag].Enqueue(objectToSpawn);
+
+            return objectToSpawn;
+        }
+
         public GameObject GetPooledObject(string tag, Vector3 position, Quaternion rotation)
         {
             if (!poolDictionary.ContainsKey(tag))
@@ -72,8 +83,8 @@ namespace MVC.Controllers
 
             GameObject objectToSpawn = poolDictionary[tag].Dequeue();
 
-            objectToSpawn.SetActive(true);
             objectToSpawn.transform.SetPositionAndRotation(position, rotation);
+            objectToSpawn.SetActive(true);
 
             poolDictionary[tag].Enqueue(objectToSpawn);
 
@@ -90,8 +101,8 @@ namespace MVC.Controllers
 
             GameObject objectToSpawn = poolDictionary[tag].Dequeue();
 
+            objectToSpawn.transform.SetPositionAndRotation(position, rotation);
             objectToSpawn.transform.SetParent(parent);
-            objectToSpawn.transform.SetPositionAndRotation(position, rotation);
             objectToSpawn.SetActive(true);
 
             poolDictionary[tag].Enqueue(objectToSpawn);
@@ -99,7 +110,7 @@ namespace MVC.Controllers
             return objectToSpawn;
         }
 
-        public GameObject GetPooledObject(string tag, Vector3 position, Transform parent, bool worldPositionStays)
+        public GameObject GetPooledObject(string tag, Vector3 position, Quaternion rotation, Transform parent, bool worldPositionStays)
         {
             if (!poolDictionary.ContainsKey(tag))
             {
@@ -109,47 +120,9 @@ namespace MVC.Controllers
 
             GameObject objectToSpawn = poolDictionary[tag].Dequeue();
 
-            objectToSpawn.SetActive(true);
-            objectToSpawn.transform.position = position;
+            objectToSpawn.transform.SetPositionAndRotation(position, rotation);
             objectToSpawn.transform.SetParent(parent, worldPositionStays);
-
-            poolDictionary[tag].Enqueue(objectToSpawn);
-
-            return objectToSpawn;
-        }
-
-        public GameObject GetPooledObject(string tag, Vector3 position, Quaternion rotation, bool worldPositionStays)
-        {
-            if (!poolDictionary.ContainsKey(tag))
-            {
-                Debug.LogWarning($"Pool with tag {tag} doesn't exist.");
-                return null;
-            }
-
-            GameObject objectToSpawn = poolDictionary[tag].Dequeue();
-
             objectToSpawn.SetActive(true);
-            objectToSpawn.transform.SetPositionAndRotation(position, rotation);
-            objectToSpawn.transform.SetParent(transform, worldPositionStays);
-
-            poolDictionary[tag].Enqueue(objectToSpawn);
-
-            return objectToSpawn;
-        }
-
-        public GameObject GetPooledObject(string tag, Vector3 position, bool worldPositionStays)
-        {
-            if (!poolDictionary.ContainsKey(tag))
-            {
-                Debug.LogWarning($"Pool with tag {tag} doesn't exist.");
-                return null;
-            }
-
-            GameObject objectToSpawn = poolDictionary[tag].Dequeue();
-
-            objectToSpawn.SetActive(true);
-            objectToSpawn.transform.position = position;
-            objectToSpawn.transform.SetParent(transform, worldPositionStays);
 
             poolDictionary[tag].Enqueue(objectToSpawn);
 

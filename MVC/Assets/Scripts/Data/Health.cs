@@ -21,8 +21,7 @@ namespace MVC.Data
         [BoxGroup("Health"), ProgressBar(0, "_maxHealth", ColorGetter = "GetHealthBarColour"), LabelWidth(125), SerializeField]
         private float _currentHealth;
 
-        [SerializeField]
-        private UnityEvent _onHealthChanged, _onZeroHealth;
+        public UnityEvent onHealthChanged, onZeroHealth;
 
         public void ChangeHealth(float amount)
         {
@@ -30,10 +29,10 @@ namespace MVC.Data
 
             if (CurrentHealth <= 0)
             {
-                _onZeroHealth?.Invoke();
+                onZeroHealth?.Invoke();
             }
 
-            _onHealthChanged?.Invoke();
+            onHealthChanged?.Invoke();
         }
 
         private Color GetHealthBarColour(float value)

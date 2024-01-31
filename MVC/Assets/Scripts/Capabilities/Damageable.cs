@@ -1,3 +1,4 @@
+using MVC.Controllers;
 using MVC.Data;
 using UnityEngine;
 using UnityEngine.Events;
@@ -29,7 +30,8 @@ namespace MVC.Capabilities
 
         public void DestroySelf()
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
+            transform.SetParent(ObjectPoolController.Instance.transform);
         }
     }
 }
