@@ -1492,6 +1492,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <InputReader>k__BackingField: {fileID: 11400000, guid: fe1a79578ad7d184ab9d378275ab8f3d, type: 2}
+  _characterDataController: {fileID: 11400000, guid: 1c1a503aa151ec14b80ee709d92bc8ef, type: 2}
 --- !u!114 &2938680110559735175
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1519,13 +1520,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a969cdb2e3eb04d4ea670cb314c3f403, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <AirMoveSpeed>k__BackingField: 45
-  _jumpForce: 28
   _gravityScale: 7
   _groundCheckDistance: 0.7
   _groundLayers:
     serializedVersion: 2
     m_Bits: 65
+  _characterDataController: {fileID: 11400000, guid: 1c1a503aa151ec14b80ee709d92bc8ef, type: 2}
 --- !u!114 &4188090471873725594
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1538,7 +1538,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b1be0825372ca24d88bbc11f55f98bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <MoveSpeed>k__BackingField: 65
   _turnSmooth: 0.175
   _followTarget: {fileID: 8656634641076936786}
 --- !u!114 &7071760382836010111
@@ -1553,13 +1552,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa4a2a3530616e346a415bd38c95a63a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _targetingRange: 70
   _projectile: {fileID: 2337146425098474599, guid: 1a0dc79d7e222824fba33cbbf41270ac, type: 3}
   _seekableProjectile: {fileID: 6601240628946093183, guid: a5df6096402808746973c912ce04705f, type: 3}
+  _characterDataController: {fileID: 11400000, guid: 1c1a503aa151ec14b80ee709d92bc8ef, type: 2}
   _lookingAim: {fileID: 8656634641076936786}
   _shootingOrigin: {fileID: 3253044226228037279}
   _bulletPrefab: {fileID: 6601240628946093183, guid: a5df6096402808746973c912ce04705f, type: 3}
   targets:
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
 --- !u!114 &5793640458376860615
 MonoBehaviour:

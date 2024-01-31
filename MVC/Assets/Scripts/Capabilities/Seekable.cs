@@ -7,11 +7,11 @@ namespace MVC.Capabilities
     [AddComponentMenu("Capabilities/Seekable")]
     public class Seekable : MonoBehaviour
     {
-        [BoxGroup("Settings"), Range(0, 1000), SerializeField]
+        [BoxGroup("Settings"), Range(0, 100), SerializeField]
         private float _speed;
 
         private Rigidbody _rb;
-        private Transform _target;
+        private Targetable _target;
         private bool _isFollowing = false;
 
         private void Awake()
@@ -25,16 +25,16 @@ namespace MVC.Capabilities
             _target = null;
         }
 
-        private void Update()
+        private void FixedUpdate()
         {
             if (_isFollowing)
             {
-                Vector3 direction = (_target.position - transform.position).normalized;
-                _rb.MovePosition(transform.position + _speed * Time.deltaTime * direction);
+                Vector3 direction = (_target.transform.position - transform.position).normalized;
+                _rb.AddForce((direction * _speed) - _rb.velocity, ForceMode.Force);
             }
         }
 
-        public void SetTarget(Transform target)
+        public void SetTarget(Targetable target)
         {
             _target = target;
             _isFollowing = true;

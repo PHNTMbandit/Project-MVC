@@ -7,25 +7,22 @@ namespace MVC.Utilities
     {
         public static Targetable GetClosetTargetableToCentre(Transform origin, Renderer[] renderers, float minDistance, Camera camera)
         {
+            Targetable target = null;
+            Vector3 currentPos = origin.position;
+
             foreach (var renderer in renderers)
             {
                 if (IsVisible(renderer, camera))
                 {
-                    Targetable tMin = null;
-                    Vector3 currentPosition = origin.position;
-                    float distance = Vector3.Distance(renderer.gameObject.transform.position, currentPosition);
-
+                    float distance = Vector3.Distance(renderer.transform.position, currentPos);
                     if (distance < minDistance)
                     {
-                        tMin = renderer.GetComponent<Targetable>();
+                        target = renderer.GetComponent<Targetable>();
                         minDistance = distance;
                     }
-
-                    return tMin;
                 }
             }
-
-            return null;
+            return target;
         }
 
         private static bool IsVisible(Renderer renderer, Camera camera)

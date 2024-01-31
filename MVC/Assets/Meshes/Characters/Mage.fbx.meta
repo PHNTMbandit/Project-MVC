@@ -3,7 +3,12 @@ guid: 8dee4ff41042a7f428014dae72e70e1f
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mage_texture
+    second: {fileID: 2100000, guid: 345adb5666304c243b2349c45139f6cd, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

@@ -14,7 +14,7 @@ namespace MVC.Player.StateMachine.SuperStates
 
             if (stateController.InputReader.ShootInput)
             {
-                stateController.PlayerShoot.ShootProjectile();
+                stateController.PlayerShoot.Shoot();
             }
 
             if (!stateController.InputReader.AimInput)
@@ -28,7 +28,7 @@ namespace MVC.Player.StateMachine.SuperStates
             base.OnFixedUpdate();
 
             stateController.PlayerAim.Aim();
-            stateController.PlayerMove.Move(stateController.InputReader.MoveInput, stateController.PlayerMove.MoveSpeed);
+            stateController.PlayerMove.Move(stateController.InputReader.MoveInput, stateController.CharacterData.moveSpeed);
         }
     }
 }

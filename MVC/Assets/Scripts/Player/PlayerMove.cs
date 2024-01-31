@@ -6,10 +6,7 @@ namespace MVC.Player
     [AddComponentMenu("Player/Player Movement")]
     public class PlayerMove : MonoBehaviour
     {
-        [field: BoxGroup("Settings"), SerializeField, Range(0, 100)]
-        public float MoveSpeed { get; private set; }
-
-        [BoxGroup("Turn"), Range(0, 1), SerializeField]
+        [BoxGroup("Settings"), Range(0, 1), SerializeField]
         private float _turnSmooth;
 
         [FoldoutGroup("References"), SerializeField]

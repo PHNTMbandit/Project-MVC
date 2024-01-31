@@ -1,5 +1,6 @@
 using MVC.Input;
 using MVC.Player.StateMachine.SuperStates;
+using MVC.Utilities;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -15,6 +16,10 @@ namespace MVC.Player.StateMachine
         [field: FoldoutGroup("References"), SerializeField]
         public InputReader InputReader { get; private set; }
 
+        [FoldoutGroup("References"), SerializeField]
+        private CharacterDataController _characterDataController;
+
+        public CharacterData CharacterData { get; private set; }
         public Animator Animator { get; private set; }
         public PlayerStateMachine StateMachine { get; private set; }
         public PlayerAimState AimState { get; private set; }
@@ -39,6 +44,7 @@ namespace MVC.Player.StateMachine
             PlayerJump = GetComponent<PlayerJump>();
             PlayerMove = GetComponent<PlayerMove>();
             PlayerShoot = GetComponent<PlayerShoot>();
+            CharacterData = _characterDataController.GetCharacterData(name);
         }
 
         private void Start()
