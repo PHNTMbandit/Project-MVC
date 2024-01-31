@@ -1,64 +1,12 @@
 {
   "characters": [
     {
-      "name": "Character_0",
-      "spritePath": "Image/Characters",
-      "spriteIndex": 0
-    },
-    {
-      "name": "Character_1",
-      "spritePath": "Image/Characters",
-      "spriteIndex": 1
-    },
-    {
-      "name": "Character_2",
-      "spritePath": "Image/Characters",
-      "spriteIndex": 2
-    },
-    {
-      "name": "Character_3",
-      "spritePath": "Image/Characters",
-      "spriteIndex": 3
-    },
-    {
-      "name": "Character_4",
-      "spritePath": "Image/Characters",
-      "spriteIndex": 4
-    },
-    {
-      "name": "Character_5",
-      "spritePath": "Image/Characters",
-      "spriteIndex": 5
-    },
-    {
-      "name": "Character_6",
-      "spritePath": "Image/Characters",
-      "spriteIndex": 6
-    },
-    {
-      "name": "Character_7",
-      "spritePath": "Image/Characters",
-      "spriteIndex": 7
-    },
-    {
-      "name": "Character_8",
-      "spritePath": "Image/Characters",
-      "spriteIndex": 8
-    },
-    {
-      "name": "Character_9",
-      "spritePath": "Image/Characters",
-      "spriteIndex": 9
-    },
-    {
-      "name": "Character_10",
-      "spritePath": "Image/Characters",
-      "spriteIndex": 0
-    },
-    {
-      "name": "Character_11",
-      "spritePath": "Image/Characters",
-      "spriteIndex": 1
+      "name": "Mage",
+      "fireRate": 3.8,
+      "targetingRange": 70,
+      "moveSpeed": 65,
+      "jumpForce": 28,
+      "airMoveSpeed": 45
     }
   ]
 }

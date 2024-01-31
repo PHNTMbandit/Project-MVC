@@ -8,8 +8,11 @@ namespace MVC.Utilities
     public class CharacterData
     {
         public string name;
-        public string spritePath;
-        public int spriteIndex;
+        public float fireRate;
+        public float targetingRange;
+        public float moveSpeed;
+        public float jumpForce;
+        public float airMoveSpeed;
     }
 
     [CreateAssetMenu(fileName = "Character Data", menuName = "MVC/Character Data")]
