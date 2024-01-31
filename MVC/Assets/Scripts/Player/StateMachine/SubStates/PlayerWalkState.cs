@@ -41,7 +41,7 @@ namespace MVC.Player.StateMachine.SuperStates
         {
             base.OnFixedUpdate();
 
-            stateController.PlayerMove.Move(stateController.InputReader.MoveInput, stateController.PlayerMove.MoveSpeed);
+            stateController.PlayerMove.Move(stateController.InputReader.MoveInput, stateController.CharacterData.moveSpeed);
         }
     }
 }

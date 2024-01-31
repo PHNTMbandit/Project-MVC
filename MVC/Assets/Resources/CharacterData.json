@@ -1,7 +1,31 @@
 {
   "characters": [
     {
+      "name": "Barbarian",
+      "fireRate": 3.8,
+      "targetingRange": 70,
+      "moveSpeed": 65,
+      "jumpForce": 28,
+      "airMoveSpeed": 45
+    },
+    {
+      "name": "Knight",
+      "fireRate": 3.8,
+      "targetingRange": 70,
+      "moveSpeed": 65,
+      "jumpForce": 28,
+      "airMoveSpeed": 45
+    },
+    {
       "name": "Mage",
+      "fireRate": 3.8,
+      "targetingRange": 70,
+      "moveSpeed": 65,
+      "jumpForce": 28,
+      "airMoveSpeed": 45
+    },
+    {
+      "name": "Rogue",
       "fireRate": 3.8,
       "targetingRange": 70,
       "moveSpeed": 65,

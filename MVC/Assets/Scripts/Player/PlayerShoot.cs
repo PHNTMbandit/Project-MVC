@@ -11,17 +11,14 @@ namespace MVC.Player
     [AddComponentMenu("Player/Player Shoot")]
     public class PlayerShoot : MonoBehaviour
     {
-        [BoxGroup("Settings"), SerializeField, Range(0, 10)]
-        private float _fireRate;
-
-        [BoxGroup("Settings"), SerializeField, Range(0, 100)]
-        private float _targetingRange;
-
         [BoxGroup("Projectiles"), SerializeField]
         private Projectile _projectile;
 
         [BoxGroup("Projectiles"), SerializeField]
         private Seekable _seekableProjectile;
+
+        [FoldoutGroup("References"), SerializeField]
+        private CharacterDataController _characterDataController;
 
         [FoldoutGroup("References"), SerializeField]
         private Transform _lookingAim, _shootingOrigin;
@@ -32,19 +29,21 @@ namespace MVC.Player
         public MeshRenderer[] targets;
 
         private Camera _camera;
+        private CharacterData _characterData;
         private float _nextFireTime = 0f;
         private readonly ProjectileFactory _projectileFactory = new();
 
         private void Awake()
         {
             _camera = Camera.main;
+            _characterData = _characterDataController.GetCharacterData(name);
         }
 
         public void ShootProjectile()
         {
             if (Time.time >= _nextFireTime)
             {
-                _nextFireTime = Time.time + 1f / _fireRate;
+                _nextFireTime = Time.time + 1f / _characterData.fireRate;
 
                 _projectileFactory.GetProjectile(_projectile, _shootingOrigin);
             }
@@ -54,9 +53,9 @@ namespace MVC.Player
         {
             if (Time.time >= _nextFireTime)
             {
-                _nextFireTime = Time.time + 1f / _fireRate;
+                _nextFireTime = Time.time + 1f / _characterData.fireRate;
 
-                Targetable target = EnemyTargeting.GetClosetTargetableToCentre(transform, targets, _targetingRange, _camera);
+                Targetable target = EnemyTargeting.GetClosetTargetableToCentre(transform, targets, _characterData.targetingRange, _camera);
 
                 if (target != null)
                 {

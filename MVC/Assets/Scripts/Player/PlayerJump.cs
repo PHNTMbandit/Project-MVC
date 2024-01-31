@@ -1,3 +1,4 @@
+using MVC.Utilities;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -6,11 +7,8 @@ namespace MVC.Player
     [AddComponentMenu("Player/Player Jump")]
     public class PlayerJump : MonoBehaviour
     {
-        [field: BoxGroup("Move"), SerializeField, Range(0, 100)]
-        public float AirMoveSpeed { get; private set; }
-
         [BoxGroup("Jump"), Range(0, 50), SerializeField]
-        private float _jumpForce, _gravityScale;
+        private float _gravityScale;
 
         [BoxGroup("Ground Check"), Range(0, 10), SerializeField]
         private float _groundCheckDistance;
@@ -18,11 +16,16 @@ namespace MVC.Player
         [BoxGroup("Ground Check"), SerializeField]
         private LayerMask _groundLayers;
 
+        [FoldoutGroup("References"), SerializeField]
+        private CharacterDataController _characterDataController;
+
         private Rigidbody _rb;
+        private CharacterData _characterData;
 
         private void Awake()
         {
             _rb = GetComponentInParent<Rigidbody>();
+            _characterData = _characterDataController.GetCharacterData(name);
         }
 
         private void FixedUpdate()
@@ -32,7 +35,7 @@ namespace MVC.Player
 
         public void Jump()
         {
-            _rb.AddForce(_rb.transform.up * _jumpForce, ForceMode.Impulse);
+            _rb.AddForce(_rb.transform.up * _characterData.jumpForce, ForceMode.Impulse);
         }
 
         public void SetGravityScale()

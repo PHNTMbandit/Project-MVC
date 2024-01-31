@@ -31,7 +31,7 @@ namespace MVC.Utilities
         [SerializeField]
         private CharacterList _characterList = new();
 
-        private void OnEnable()
+        private void OnValidate()
         {
             _characterList = JsonUtility.FromJson<CharacterList>(_JSONFile.text);
         }
