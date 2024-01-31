@@ -1,0 +1,62 @@
+{
+  "c_0": {
+    "name": "Character_0",
+    "spritePath": "Image/Characters",
+    "spriteIndex": 0
+  },
+  "c_1": {
+    "name": "Character_1",
+    "spritePath": "Image/Characters",
+    "spriteIndex": 1
+  },
+  "c_2": {
+    "name": "Character_2",
+    "spritePath": "Image/Characters",
+    "spriteIndex": 2
+  },
+  "c_3": {
+    "name": "Character_3",
+    "spritePath": "Image/Characters",
+    "spriteIndex": 3
+  },
+  "c_4": {
+    "name": "Character_4",
+    "spritePath": "Image/Characters",
+    "spriteIndex": 4
+  },
+  "c_5": {
+    "name": "Character_5",
+    "spritePath": "Image/Characters",
+    "spriteIndex": 5
+  },
+  "c_6": {
+    "name": "Character_6",
+    "spritePath": "Image/Characters",
+    "spriteIndex": 6
+  },
+  "c_7": {
+    "name": "Character_7",
+    "spritePath": "Image/Characters",
+    "spriteIndex": 7
+  },
+  "c_8": {
+    "name": "Character_8",
+    "spritePath": "Image/Characters",
+    "spriteIndex": 8
+  },
+  "c_9": {
+    "name": "Character_9",
+    "spritePath": "Image/Characters",
+    "spriteIndex": 9
+  },
+  "c_10": {
+    "name": "Character_10",
+    "spritePath": "Image/Characters",
+    "spriteIndex": 0
+  },
+  "c_11": {
+    "name": "Character_11",
+    "spritePath": "Image/Characters",
+    "spriteIndex": 1
+  }
+}
