@@ -14,11 +14,14 @@ namespace MVC.Utilities
             {
                 if (target.IsVisible())
                 {
-                    float distance = Vector3.Distance(target.transform.position, currentPos);
-                    if (distance < minDistance)
+                    if (target.isActiveAndEnabled)
                     {
-                        closetTarget = target.GetComponent<Targetable>();
-                        minDistance = distance;
+                        float distance = Vector3.Distance(target.transform.position, currentPos);
+                        if (distance < minDistance)
+                        {
+                            closetTarget = target.GetComponent<Targetable>();
+                            minDistance = distance;
+                        }
                     }
                 }
             }
