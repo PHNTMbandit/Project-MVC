@@ -18,27 +18,26 @@ namespace MVC.Utilities
     [CreateAssetMenu(fileName = "Character Data", menuName = "MVC/Character Data")]
     public class CharacterDataController : ScriptableObject
     {
-        [Serializable, HideLabel]
+        [Serializable]
         public class CharacterList
         {
-            [ReadOnly, TableList(AlwaysExpanded = true, DrawScrollView = false)]
+            [TableList(AlwaysExpanded = true, DrawScrollView = false)]
             public CharacterData[] characters;
         }
+
+        public CharacterList CharacterListData = new();
 
         [SerializeField, Required]
         private TextAsset _JSONFile;
 
-        [SerializeField]
-        private CharacterList _characterList = new();
-
         private void OnValidate()
         {
-            _characterList = JsonUtility.FromJson<CharacterList>(_JSONFile.text);
+            CharacterListData = JsonUtility.FromJson<CharacterList>(_JSONFile.text);
         }
 
         public CharacterData GetCharacterData(string name)
         {
-            return Array.Find(_characterList.characters, i => i.name == name);
+            return Array.Find(CharacterListData.characters, i => i.name == name);
         }
     }
 }

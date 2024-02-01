@@ -9,11 +9,13 @@ namespace MVC.Input
     {
         public GameControls GameControls { get; private set; }
         public bool AimInput { get; private set; }
+        public bool ClickInput { get; private set; }
         public bool JumpInput { get; private set; }
         public bool ShootInput { get; private set; }
         public bool SprintInput { get; private set; }
         public Vector2 LookInput { get; private set; }
         public Vector2 MoveInput { get; private set; }
+        public Vector2 PointerPosition { get; private set; }
 
         [HideInInspector]
         public UnityEvent onJump;
@@ -47,6 +49,18 @@ namespace MVC.Input
             }
         }
 
+        public void OnClick(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+            {
+                ClickInput = true;
+            }
+            else if (context.canceled)
+            {
+                ClickInput = false;
+            }
+        }
+
         public void OnJump(InputAction.CallbackContext context)
         {
             if (context.performed)
@@ -69,6 +83,18 @@ namespace MVC.Input
         public void OnMove(InputAction.CallbackContext context)
         {
             MoveInput = context.ReadValue<Vector2>();
+        }
+
+        public void OnOpenCharacterSelection(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+            {
+            }
+        }
+
+        public void OnPointerPosition(InputAction.CallbackContext context)
+        {
+            PointerPosition = context.ReadValue<Vector2>();
         }
 
         public void OnShoot(InputAction.CallbackContext context)
