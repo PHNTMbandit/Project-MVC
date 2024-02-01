@@ -49,8 +49,6 @@ namespace MVC.Player.StateMachine
 
         private void Start()
         {
-            Cursor.visible = false;
-
             StateMachine.Initialise(IdleState);
         }
 

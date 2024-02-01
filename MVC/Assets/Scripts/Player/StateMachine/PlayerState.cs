@@ -12,12 +12,6 @@ namespace MVC.Player.StateMachine
             this.stateController = stateController;
             this.stateAnimationName = stateAnimationName;
         }
-
-        protected PlayerState(PlayerStateController stateController)
-        {
-            this.stateController = stateController;
-        }
-
         public virtual void OnEnter()
         {
             stateController.Animator.SetBool(stateAnimationName, true);
