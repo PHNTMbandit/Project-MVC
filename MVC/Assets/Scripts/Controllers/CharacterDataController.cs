@@ -8,7 +8,8 @@ namespace MVC.Utilities
     public class CharacterData
     {
         public string name;
-        public string spritePath;
+        public GameObject model;
+        public Sprite sprite;
         public float fireRate;
         public float targetingRange;
         public float moveSpeed;
@@ -19,15 +20,14 @@ namespace MVC.Utilities
     [CreateAssetMenu(fileName = "Character Data", menuName = "MVC/Character Data")]
     public class CharacterDataController : ScriptableObject
     {
-        [Serializable, HideLabel]
+        [Serializable]
         public class CharacterList
         {
-            [ReadOnly, TableList(AlwaysExpanded = true, DrawScrollView = false)]
+            [TableList(AlwaysExpanded = true, DrawScrollView = false)]
             public CharacterData[] characters;
         }
 
-        [ShowInInspector]
-        public CharacterList CharacterListData { get; private set; } = new();
+        public CharacterList CharacterListData = new();
 
         [SerializeField, Required]
         private TextAsset _JSONFile;

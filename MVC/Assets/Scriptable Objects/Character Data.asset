@@ -12,30 +12,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e36545e00dddb594592ed16dafb2a653, type: 3}
   m_Name: Character Data
   m_EditorClassIdentifier: 
-  _JSONFile: {fileID: 4900000, guid: d7f74b6cceea8364ead2e8e7a1347643, type: 3}
-  _characterList:
+  CharacterListData:
     characters:
     - name: Barbarian
+      model: {fileID: 0}
+      sprite: {fileID: 0}
+      fireRate: 3.8
+      targetingRange: 70
+      moveSpeed: 65
+      jumpForce: 28
+      airMoveSpeed: 45
+    - name: Druid
+      model: {fileID: 0}
+      sprite: {fileID: 0}
+      fireRate: 3.8
+      targetingRange: 70
+      moveSpeed: 65
+      jumpForce: 28
+      airMoveSpeed: 45
+    - name: Engineer
+      model: {fileID: 0}
+      sprite: {fileID: 0}
       fireRate: 3.8
       targetingRange: 70
       moveSpeed: 65
       jumpForce: 28
       airMoveSpeed: 45
     - name: Knight
+      model: {fileID: 0}
+      sprite: {fileID: 0}
       fireRate: 3.8
       targetingRange: 70
       moveSpeed: 65
       jumpForce: 28
       airMoveSpeed: 45
     - name: Mage
+      model: {fileID: 0}
+      sprite: {fileID: 0}
       fireRate: 3.8
       targetingRange: 70
       moveSpeed: 65
       jumpForce: 28
       airMoveSpeed: 45
     - name: Rogue
+      model: {fileID: 0}
+      sprite: {fileID: 0}
       fireRate: 3.8
       targetingRange: 70
       moveSpeed: 65
       jumpForce: 28
       airMoveSpeed: 45
+  _JSONFile: {fileID: 4900000, guid: d7f74b6cceea8364ead2e8e7a1347643, type: 3}

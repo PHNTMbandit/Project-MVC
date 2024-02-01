@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using MVC.Controllers;
 using MVC.Utilities;
@@ -19,6 +18,12 @@ namespace MVC.UI
         [BoxGroup("Grid"), SerializeField]
         private Transform _grid;
 
+        [BoxGroup("3D Model"), SerializeField]
+        private Transform _modelHolder;
+
+        [BoxGroup("3D Model"), SerializeField]
+        private Transform _templateModel;
+
         [BoxGroup("Information"), SerializeField]
         private TextMeshProUGUI _currentCharacterName, _information;
 
@@ -33,6 +38,7 @@ namespace MVC.UI
         private void Awake()
         {
             _templateSelectionButton.gameObject.SetActive(false);
+            _templateModel.gameObject.SetActive(false);
 
             _characterSelectionController.onCharacterChange.AddListener(UpdateUI);
         }
@@ -53,7 +59,7 @@ namespace MVC.UI
                 button.gameObject.SetActive(true);
 
                 button.SetCharacter(character);
-                button.SetIcon(Resources.Load<Sprite>(character.spritePath));
+                button.SetIcon(character.sprite);
 
                 _buttons.Add(button);
             }

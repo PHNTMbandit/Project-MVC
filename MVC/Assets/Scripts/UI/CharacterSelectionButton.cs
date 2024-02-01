@@ -32,7 +32,10 @@ namespace MVC.UI
 
         public void OnClick()
         {
-            _characterSelectionController.SetCurrentCharacter(Character);
+            if (_characterSelectionController.CurrentCharacter != Character)
+            {
+                _characterSelectionController.SetCurrentCharacter(Character);
+            }
         }
     }
 }
