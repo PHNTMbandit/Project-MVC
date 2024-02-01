@@ -19,10 +19,7 @@ namespace MVC.UI
         private Transform _grid;
 
         [BoxGroup("3D Model"), SerializeField]
-        private Transform _modelHolder;
-
-        [BoxGroup("3D Model"), SerializeField]
-        private Transform _templateModel;
+        private Transform _modelHolder, _templateModel;
 
         [BoxGroup("Information"), SerializeField]
         private TextMeshProUGUI _currentCharacterName, _information;
@@ -33,6 +30,7 @@ namespace MVC.UI
         [BoxGroup("References"), SerializeField]
         private CharacterSelectionController _characterSelectionController;
 
+        private readonly List<GameObject> _models = new();
         private readonly List<CharacterSelectionButton> _buttons = new();
 
         private void Awake()
@@ -59,10 +57,12 @@ namespace MVC.UI
                 button.gameObject.SetActive(true);
 
                 button.SetCharacter(character);
-                button.SetIcon(character.sprite);
+                button.SetIcon(Resources.Load<Sprite>($"Sprites/{character.name}"));
 
                 _buttons.Add(button);
             }
+
+            GenerateModels();
         }
 
         private void ResetList()
@@ -78,6 +78,19 @@ namespace MVC.UI
             }
         }
 
+        private void GenerateModels()
+        {
+            CharacterData[] characters = _characterDataController.CharacterListData.characters;
+            for (int i = 0; i < characters.Length; i++)
+            {
+                GameObject model = Instantiate(Resources.Load<GameObject>($"Meshes/UI/{characters[i].name} UI Model"), _modelHolder.transform.position, Quaternion.identity, _modelHolder);
+                model.transform.SetLocalPositionAndRotation(_templateModel.localPosition, _templateModel.localRotation);
+                model.SetActive(false);
+
+                _models.Add(model);
+            }
+        }
+
         private void UpdateUI()
         {
             CharacterData currentCharacter = _characterSelectionController.CurrentCharacter;
@@ -86,6 +99,12 @@ namespace MVC.UI
 
             _buttons.Find(i => i.Character == currentCharacter)?.SetBorderColour(_selectedBorderColour);
             List<CharacterSelectionButton> unselectedCharacterButtons = _buttons.FindAll(i => i.Character != currentCharacter);
+
+            for (int i = 0; i < _models.Count; i++)
+            {
+                _models[i].transform.eulerAngles = new Vector3(0, -180, 0);
+                _models[i].SetActive(_models[i].name.Split(' ')[0] == currentCharacter.name);
+            }
 
             for (int i = 0; i < unselectedCharacterButtons.Count; i++)
             {

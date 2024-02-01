@@ -8,8 +8,6 @@ namespace MVC.Utilities
     public class CharacterData
     {
         public string name;
-        public GameObject model;
-        public Sprite sprite;
         public float fireRate;
         public float targetingRange;
         public float moveSpeed;
