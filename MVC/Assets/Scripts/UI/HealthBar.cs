@@ -16,6 +16,7 @@ namespace MVC.UI
         public void Initialise(Health target)
         {
             Target = target;
+
             UpdateSlider();
 
             Target.onHealthChanged.AddListener(UpdateSlider);

@@ -5,34 +5,27 @@ namespace MVC.Utilities
 {
     public static class EnemyTargeting
     {
-        public static Targetable GetClosetTargetableToCentre(Transform origin, Renderer[] renderers, float minDistance, Camera camera)
+        public static Targetable GetClosetTargetableToCentre(Transform origin, Targetable[] targetables, float minDistance, Camera camera)
         {
-            Targetable target = null;
+            Targetable closetTarget = null;
             Vector3 currentPos = origin.position;
 
-            foreach (var renderer in renderers)
+            foreach (var target in targetables)
             {
-                if (IsVisible(renderer, camera))
+                if (target.IsVisible())
                 {
-                    float distance = Vector3.Distance(renderer.transform.position, currentPos);
-                    if (distance < minDistance)
+                    if (target.isActiveAndEnabled)
                     {
-                        target = renderer.GetComponent<Targetable>();
-                        minDistance = distance;
+                        float distance = Vector3.Distance(target.transform.position, currentPos);
+                        if (distance < minDistance)
+                        {
+                            closetTarget = target.GetComponent<Targetable>();
+                            minDistance = distance;
+                        }
                     }
                 }
             }
-            return target;
-        }
-
-        private static bool IsVisible(Renderer renderer, Camera camera)
-        {
-            Plane[] planes = GeometryUtility.CalculateFrustumPlanes(camera);
-
-            if (GeometryUtility.TestPlanesAABB(planes, renderer.bounds))
-                return true;
-            else
-                return false;
+            return closetTarget;
         }
     }
 }

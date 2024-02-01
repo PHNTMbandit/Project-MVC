@@ -334,11 +334,35 @@ MonoBehaviour:
     m_ActionId: 41882bab-41d5-490d-bf11-c582fa4214ff
     m_ActionName: UI/Cancel[/Keyboard/escape]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: fe1a79578ad7d184ab9d378275ab8f3d, type: 2}
+        m_TargetAssemblyTypeName: MVC.Input.InputReader, Assembly-CSharp
+        m_MethodName: OnPointerPosition
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 61f0a675-d3f1-4345-943b-1e92003c2294
     m_ActionName: UI/Point[/Mouse/position]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: fe1a79578ad7d184ab9d378275ab8f3d, type: 2}
+        m_TargetAssemblyTypeName: MVC.Input.InputReader, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: c4a2db44-e53d-4bfc-9fa2-c3e7a1e08f8c
     m_ActionName: UI/Click[/Mouse/leftButton]
   - m_PersistentCalls:
@@ -393,6 +417,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: dd53365f-906c-4a7f-9860-bee30c7bb039
     m_ActionName: Gameplay/Sprint[/XInputControllerWindows/buttonEast,/Keyboard/shift]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 8b5265b3-5c81-4328-b4d9-6bae22e602c0
+    m_ActionName: Gameplay/Open Character Selection[/Keyboard/escape,/XInputControllerWindows/start]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Gameplay
@@ -1458,7 +1486,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHealth: 100
   _currentHealth: 100
-  _healthBarPrefab: {fileID: 6582461529048803790, guid: d14e253a4630f1f4daac0771adf81e73, type: 3}
   onHealthChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1558,6 +1585,8 @@ MonoBehaviour:
   _lookingAim: {fileID: 8656634641076936786}
   _shootingOrigin: {fileID: 3253044226228037279}
   targets:
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
 --- !u!114 &5793640458376860615
 MonoBehaviour:

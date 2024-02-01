@@ -20,30 +20,24 @@ namespace MVC.UI
         private HealthBar _healthBarPrefab;
 
         private Health _target;
-        private HealthBar _healthBarInstance;
+        private HealthBar _healthBar;
         private readonly WorldUIFactory _worldUIFactory = new();
-
-        private void OnDisable()
-        {
-            _target.onZeroHealth.RemoveListener(ResetUI);
-        }
 
         private void Awake()
         {
             _target = GetComponent<Health>();
-            _target.onZeroHealth.AddListener(ResetUI);
         }
 
         private void Start()
         {
-            _healthBarInstance = _worldUIFactory.GetUI(_healthBarPrefab, transform, _HUD.transform, _offset);
-            _healthBarInstance.Initialise(_target);
+            _healthBar = _worldUIFactory.GetUI(_healthBarPrefab, transform, _HUD.transform, _offset);
+            _healthBar.Initialise(_target);
         }
 
-        private void ResetUI()
+        public void RemoveUI()
         {
-            _healthBarInstance.gameObject.SetActive(false);
-            _healthBarInstance.transform.SetParent(ObjectPoolController.Instance.transform);
+            _healthBar.gameObject.SetActive(false);
+            _healthBar.transform.SetParent(ObjectPoolController.Instance.transform);
         }
     }
 }
