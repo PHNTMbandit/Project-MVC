@@ -1,3 +1,4 @@
+using System.Linq;
 using MVC.Capabilities;
 using MVC.Factories;
 using MVC.Projectiles;
@@ -11,6 +12,7 @@ namespace MVC.Player
     [AddComponentMenu("Player/Player Shoot")]
     public class PlayerShoot : MonoBehaviour
     {
+
         [BoxGroup("Settings"), SerializeField]
         private Projectile _projectile;
 
@@ -20,10 +22,11 @@ namespace MVC.Player
         [FoldoutGroup("References"), SerializeField]
         private Transform _lookingAim, _shootingOrigin;
 
-        public MeshRenderer[] targets;
+        public Targetable[] targets;
 
         private Camera _camera;
         private CharacterData _characterData;
+        private Targetable _currentTarget;
         private float _nextFireTime = 0f;
         private readonly ProjectileFactory _projectileFactory = new();
 
@@ -33,14 +36,23 @@ namespace MVC.Player
             _characterData = _characterDataController.GetCharacterData(name);
         }
 
+        private void Update()
+        {
+            _currentTarget = EnemyTargeting.GetClosetTargetableToCentre(transform, targets, _characterData.targetingRange, _camera);
+
+            for (int i = 0; i < targets.Length; i++)
+            {
+                targets[i].SetCurrentTarget(_currentTarget == targets[i]);
+            }
+        }
+
         public void Shoot()
         {
             if (Time.time >= _nextFireTime)
             {
                 _nextFireTime = Time.time + 1f / _characterData.fireRate;
 
-                Targetable target = EnemyTargeting.GetClosetTargetableToCentre(transform, targets, _characterData.targetingRange, _camera);
-                _projectileFactory.GetProjectile(_projectile, _shootingOrigin, target);
+                _projectileFactory.GetProjectile(_projectile, _shootingOrigin, _currentTarget);
             }
         }
     }
