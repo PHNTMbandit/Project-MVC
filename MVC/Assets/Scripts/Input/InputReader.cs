@@ -34,7 +34,7 @@ namespace MVC.Input
 
         private void OnDisable()
         {
-            DisableGameplayInput();
+            EnableUIInput();
         }
 
         public void OnAim(InputAction.CallbackContext context)
@@ -123,12 +123,14 @@ namespace MVC.Input
 
         public void EnableGameplayInput()
         {
-            GameControls.Gameplay.Disable();
+            GameControls.Gameplay.Enable();
+            GameControls.UI.Disable();
         }
 
-        public void DisableGameplayInput()
+        public void EnableUIInput()
         {
             GameControls.Gameplay.Disable();
+            GameControls.UI.Enable();
         }
     }
 }

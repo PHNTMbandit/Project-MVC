@@ -1,5 +1,3 @@
-using UnityEngine;
-
 namespace MVC.Player.StateMachine.SuperStates
 {
     public class PlayerAimState : PlayerGroundedState
