@@ -85,6 +85,13 @@ namespace MVC.Input
             MoveInput = context.ReadValue<Vector2>();
         }
 
+        public void OnOpenCharacterSelection(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+            {
+            }
+        }
+
         public void OnPointerPosition(InputAction.CallbackContext context)
         {
             PointerPosition = context.ReadValue<Vector2>();
