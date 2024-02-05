@@ -5,7 +5,7 @@ namespace MVC.UI
 {
     public class UIFollowWorld : MonoBehaviour
     {
-        public Transform FollowTarget { get; private set; }
+        public Vector3 FollowAnchor { get; private set; }
 
         private Camera _mainCamera;
         private Canvas _HUDCanvas;
@@ -22,7 +22,7 @@ namespace MVC.UI
 
         private void Update()
         {
-            var viewportPoint = _mainCamera.WorldToViewportPoint(FollowTarget.position + (Vector3)_offset);
+            var viewportPoint = _mainCamera.WorldToViewportPoint(FollowAnchor + (Vector3)_offset);
             var screenPoint = _HUDCanvas.worldCamera.ViewportToScreenPoint(viewportPoint);
             RectTransformUtility.ScreenPointToWorldPointInRectangle(_rectTransform, screenPoint, _HUDCanvas.worldCamera, out Vector3 worldPoint);
 
@@ -32,9 +32,9 @@ namespace MVC.UI
             }
         }
 
-        public void SetFollowTarget(Transform followTarget, Vector2 offset)
+        public void SetFollowTarget(Vector3 followTarget, Vector2 offset)
         {
-            FollowTarget = followTarget;
+            FollowAnchor = followTarget;
             _offset = offset;
         }
     }

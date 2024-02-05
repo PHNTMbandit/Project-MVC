@@ -32,15 +32,15 @@ namespace MVC.Capabilities
             {
                 if (_target != null)
                 {
-                    if (!_target.isActiveAndEnabled)
+                    if (!_target.gameObject.activeSelf)
                     {
                         gameObject.SetActive(false);
                         transform.SetParent(ObjectPoolController.Instance.transform);
                     }
                     else
                     {
-                        Vector3 direction = (_target.transform.position - transform.position).normalized;
-                        _rb.AddForce((direction * _speed) - _rb.velocity, ForceMode.Force);
+                        Vector3 direction = (_target.Target.bounds.center - transform.position).normalized;
+                        _rb.AddForce((direction * _speed) - _rb.velocity, ForceMode.Impulse);
                     }
 
                 }

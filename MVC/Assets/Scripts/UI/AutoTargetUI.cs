@@ -20,9 +20,9 @@ namespace MVC.UI
         private AutoTargetIcon _targetIcon;
         private readonly WorldUIFactory _worldUIFactory = new();
 
-        private void Start()
+        public void Initialise(Renderer target)
         {
-            _targetIcon = _worldUIFactory.GetUI(_targetIconPrefab, transform, _HUD.transform, _offset);
+            _targetIcon = _worldUIFactory.GetUI(_targetIconPrefab, target.bounds.center, _HUD.transform, _offset);
             _targetIcon.gameObject.SetActive(false);
         }
 
