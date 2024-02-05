@@ -30,7 +30,7 @@ namespace MVC.UI
 
         private void Start()
         {
-            _healthBar = _worldUIFactory.GetUI(_healthBarPrefab, transform, _HUD.transform, _offset);
+            _healthBar = _worldUIFactory.GetUI(_healthBarPrefab, transform.position, _HUD.transform, _offset);
             _healthBar.Initialise(_target);
         }
 

@@ -1,4 +1,5 @@
 using MVC.Capabilities;
+using MVC.Controllers;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -8,6 +9,9 @@ namespace MVC.Projectiles
     [RequireComponent(typeof(ObjectPooledObject))]
     public class Projectile : MonoBehaviour
     {
+        [BoxGroup("VFXs"), SerializeField]
+        private GameObject _impactVFX, _muzzleVFX;
+
         [BoxGroup("Settings"), SerializeField, Range(0, 100)]
         private float _velocity;
 
@@ -25,6 +29,8 @@ namespace MVC.Projectiles
 
         public void Launch(Transform origin)
         {
+            ObjectPoolController.Instance.GetPooledObject(_muzzleVFX.name, origin.position);
+
             _rb.AddForce(origin.forward * _velocity, ForceMode.Impulse);
         }
 
@@ -32,6 +38,8 @@ namespace MVC.Projectiles
         {
             if (other.TryGetComponent(out Damageable damageable))
             {
+                ObjectPoolController.Instance.GetPooledObject(_impactVFX.name, other.transform.position);
+
                 damageable.Damage(_damage);
 
                 _pooledObject.Disable();

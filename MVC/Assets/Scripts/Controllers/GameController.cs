@@ -7,12 +7,13 @@ namespace MVC.Controllers
     public class GameController : MonoBehaviour
     {
         [SerializeField]
+        private GameObject _player;
+
+        [SerializeField]
         private Targetable[] _enemies;
 
         [SerializeField]
         private CharacterSelectionController _characterSelectionController;
-
-        private Camera _camera;
 
         #region Singleton
 
@@ -23,8 +24,6 @@ namespace MVC.Controllers
 
         private void Awake()
         {
-            _camera = Camera.main;
-
             if (_instance != null && _instance != this)
             {
                 Destroy(gameObject);
@@ -47,7 +46,7 @@ namespace MVC.Controllers
 
         public Targetable GetClosestTarget()
         {
-            return EnemyTargeting.GetClosetTargetableToCentre(transform, _enemies, _characterSelectionController.CurrentCharacter.targetingRange, _camera);
+            return EnemyTargeting.GetClosetTargetableToCentre(_player.transform, _enemies, _characterSelectionController.CurrentCharacter.targetingRange);
         }
     }
 }

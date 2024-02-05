@@ -3,27 +3,32 @@ using UnityEngine;
 
 namespace MVC.Capabilities
 {
-    [RequireComponent(typeof(Renderer))]
     [RequireComponent(typeof(AutoTargetUI))]
     [AddComponentMenu("Capabilities/Targetable")]
     public class Targetable : MonoBehaviour
     {
+        [field: SerializeField]
+        public Renderer Target { get; private set; }
+
         private AutoTargetUI _autoTargetUI;
         private Camera _camera;
-        private Renderer _renderer;
 
         private void Awake()
         {
             _camera = Camera.main;
             _autoTargetUI = GetComponent<AutoTargetUI>();
-            _renderer = GetComponent<Renderer>();
+        }
+
+        private void Start()
+        {
+            _autoTargetUI.Initialise(Target);
         }
 
         public bool IsVisible()
         {
             Plane[] planes = GeometryUtility.CalculateFrustumPlanes(_camera);
 
-            if (GeometryUtility.TestPlanesAABB(planes, _renderer.bounds))
+            if (GeometryUtility.TestPlanesAABB(planes, Target.bounds))
             {
                 return true;
             }

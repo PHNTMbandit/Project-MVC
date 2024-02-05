@@ -10,11 +10,15 @@ namespace MVC.Projectiles
         [BoxGroup("Settings"), Range(0, 100), SuffixLabel("seconds"), SerializeField]
         private float _lifetime;
 
-        [FoldoutGroup("References"), SerializeField]
-        private Rigidbody _rb;
-
         [SerializeField]
         private UnityEvent _onDisabled;
+
+        private Rigidbody _rb;
+
+        private void Awake()
+        {
+            _rb = GetComponent<Rigidbody>();
+        }
 
         private void OnEnable()
         {
@@ -28,8 +32,12 @@ namespace MVC.Projectiles
 
         public void Disable()
         {
-            _rb.velocity = Vector3.zero;
-            _rb.angularVelocity = Vector3.zero;
+            if (_rb != null)
+            {
+                _rb.velocity = Vector3.zero;
+                _rb.angularVelocity = Vector3.zero;
+            }
+
             transform.SetParent(ObjectPoolController.Instance.transform);
             gameObject.SetActive(false);
 
