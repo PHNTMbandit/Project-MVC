@@ -75,7 +75,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3c430f382484144e925c097c2d33cfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Weight: 0.7
+  m_Weight: 1
   m_Data:
     m_ConstrainedObject: {fileID: 9134119409736965549}
     m_SourceObjects:
@@ -449,6 +449,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Animator>k__BackingField: {fileID: 7869314242951249722}
+  <ThirdPersonCamera>k__BackingField: {fileID: 0}
   <InputReader>k__BackingField: {fileID: 11400000, guid: fe1a79578ad7d184ab9d378275ab8f3d, type: 2}
   _characterDataController: {fileID: 11400000, guid: 1c1a503aa151ec14b80ee709d92bc8ef, type: 2}
 --- !u!114 &643793917013290411
@@ -463,8 +464,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4274f9f078ef3fe4aa9d3dac20c41d4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _lookingTarget: {fileID: 0}
-  _aimingTarget: {fileID: 0}
+  _aim: {fileID: 6637000108114639433}
+  _rig: {fileID: 8102918587791197819}
+  _followTarget: {fileID: 0}
   _aimConstraint: {fileID: 6637000108114639433}
 --- !u!114 &118352664815384648
 MonoBehaviour:

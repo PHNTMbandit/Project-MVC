@@ -1,3 +1,5 @@
+using MVC.Controllers;
+
 namespace MVC.Player.StateMachine.SuperStates
 {
     public class PlayerGroundedState : PlayerState
@@ -11,13 +13,7 @@ namespace MVC.Player.StateMachine.SuperStates
             base.OnUpdate();
 
             stateController.PlayerAim.Look();
-
             stateController.Animator.SetBool("shooting", stateController.InputReader.ShootInput);
-
-            if (stateController.InputReader.AimInput)
-            {
-                stateController.StateMachine.ChangeState(stateController.AimState);
-            }
 
             if (!stateController.PlayerJump.IsGrounded())
             {

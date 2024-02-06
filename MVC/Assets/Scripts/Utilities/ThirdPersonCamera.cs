@@ -19,7 +19,7 @@ namespace MVC.Utilities
         [FoldoutGroup("References"), SerializeField]
         private InputReader _inputReader;
 
-        private void Update()
+        public void UpdateCamera()
         {
             _followTarget.position = _player.position + _followTargetOffset;
 

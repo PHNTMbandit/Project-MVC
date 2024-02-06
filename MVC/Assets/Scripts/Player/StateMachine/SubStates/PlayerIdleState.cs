@@ -1,3 +1,4 @@
+using MVC.Controllers;
 using UnityEngine;
 
 namespace MVC.Player.StateMachine.SuperStates
@@ -25,6 +26,13 @@ namespace MVC.Player.StateMachine.SuperStates
         public override void OnUpdate()
         {
             base.OnUpdate();
+
+            stateController.ThirdPersonCamera.UpdateCamera();
+
+            if (GameController.Instance.GetClosestTarget() != null && stateController.InputReader.AimInput)
+            {
+                stateController.StateMachine.ChangeState(stateController.AimState);
+            }
 
             if (stateController.InputReader.ShootInput)
             {

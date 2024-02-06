@@ -28,15 +28,27 @@ namespace MVC.Player
             _animator.SetFloat("speed", Mathf.Clamp(_rb.velocity.magnitude, 0.01f, 100));
         }
 
+        public void Move(Vector2 input, float moveSpeed, Transform target)
+        {
+            Vector3 moveInput = new Vector3(input.x, 0, input.y).normalized;
+            Vector3 direction = (target.position - transform.position).normalized;
+            _rb.AddForce(moveSpeed * moveInput.magnitude * direction, ForceMode.Force);
+        }
+
         public void Move(Vector2 input, float moveSpeed)
+        {
+            Vector3 direction = new Vector3(input.x, 0, input.y).normalized;
+            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + _followTarget.eulerAngles.y;
+            Vector3 moveDirection = Quaternion.Euler(0, targetAngle, 0) * Vector3.forward;
+            _rb.AddForce(moveSpeed * input.magnitude * moveDirection, ForceMode.Force);
+        }
+
+        public void Turn(Vector2 input)
         {
             Vector3 direction = new Vector3(input.x, 0, input.y).normalized;
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + _followTarget.eulerAngles.y;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref _turnSmoothVelocity, _turnSmooth);
             transform.rotation = Quaternion.Euler(0, angle, 0);
-
-            Vector3 moveDirection = Quaternion.Euler(0, targetAngle, 0) * Vector3.forward;
-            _rb.AddForce(moveSpeed * input.magnitude * moveDirection, ForceMode.Force);
         }
     }
 }

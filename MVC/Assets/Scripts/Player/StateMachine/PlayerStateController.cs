@@ -17,6 +17,9 @@ namespace MVC.Player.StateMachine
         public Animator Animator { get; private set; }
 
         [field: FoldoutGroup("References"), SerializeField]
+        public ThirdPersonCamera ThirdPersonCamera { get; private set; }
+
+        [field: FoldoutGroup("References"), SerializeField]
         public InputReader InputReader { get; private set; }
 
         [FoldoutGroup("References"), SerializeField]
