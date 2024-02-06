@@ -7,11 +7,9 @@ using UnityEngine;
 
 namespace MVC.Player
 {
-    [RequireComponent(typeof(Animator))]
     [AddComponentMenu("Player/Player Shoot")]
     public class PlayerShoot : MonoBehaviour
     {
-
         [BoxGroup("Settings"), SerializeField]
         private Projectile _projectile;
 

@@ -10,14 +10,19 @@ namespace MVC.Utilities
         [BoxGroup("Settings"), Range(0, 10), SerializeField]
         private float _rotateSpeed;
 
+        [BoxGroup("Settings"), SerializeField]
+        private Vector3 _followTargetOffset;
+
         [FoldoutGroup("References"), SerializeField]
-        private Transform _followTarget;
+        private Transform _followTarget, _player;
 
         [FoldoutGroup("References"), SerializeField]
         private InputReader _inputReader;
 
         private void Update()
         {
+            _followTarget.position = _player.position + _followTargetOffset;
+
             _followTarget.rotation *= Quaternion.AngleAxis(_inputReader.LookInput.x * _rotateSpeed, Vector3.up);
             _followTarget.rotation *= Quaternion.AngleAxis(_inputReader.LookInput.y * _rotateSpeed, Vector3.left);
 

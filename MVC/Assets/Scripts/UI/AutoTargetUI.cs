@@ -12,13 +12,16 @@ namespace MVC.UI
         private Vector3 _offset;
 
         [BoxGroup("References"), SerializeField]
-        private Canvas _HUD;
-
-        [BoxGroup("References"), SerializeField]
         private AutoTargetIcon _targetIconPrefab;
 
+        private Canvas _HUD;
         private AutoTargetIcon _targetIcon;
         private readonly WorldUIFactory _worldUIFactory = new();
+
+        private void Awake()
+        {
+            _HUD = GameObject.FindGameObjectWithTag("HUD").GetComponent<Canvas>();
+        }
 
         public void Initialise(Renderer target)
         {

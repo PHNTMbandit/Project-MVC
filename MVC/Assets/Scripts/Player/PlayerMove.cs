@@ -10,16 +10,17 @@ namespace MVC.Player
         private float _turnSmooth;
 
         [FoldoutGroup("References"), SerializeField]
+        private Animator _animator;
+
+        [FoldoutGroup("References"), SerializeField]
         private Transform _followTarget;
 
-        private Animator _animator;
         private Rigidbody _rb;
         private float _turnSmoothVelocity;
 
         private void Awake()
         {
             _rb = GetComponentInParent<Rigidbody>();
-            _animator = GetComponent<Animator>();
         }
 
         private void Update()

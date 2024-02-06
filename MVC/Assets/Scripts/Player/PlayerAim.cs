@@ -8,7 +8,7 @@ namespace MVC.Player
     public class PlayerAim : MonoBehaviour
     {
         [FoldoutGroup("References"), SerializeField]
-        private Transform _lookingTarget, _aimingTarget;
+        private Transform _lookingTarget, _followTarget;
 
         [FoldoutGroup("References"), SerializeField]
         private MultiAimConstraint _aimConstraint;
@@ -23,9 +23,9 @@ namespace MVC.Player
 
         public void Aim()
         {
-            float angleX = Mathf.SmoothDampAngle(_aimingTarget.eulerAngles.x, _camera.transform.eulerAngles.x, ref _turnSmoothVelocity, 0.1f);
-            float angleY = Mathf.SmoothDampAngle(_aimingTarget.eulerAngles.y, _camera.transform.eulerAngles.y, ref _turnSmoothVelocity, 0.1f);
-            _aimingTarget.rotation = Quaternion.Euler(angleX, angleY, 0);
+            float angleX = Mathf.SmoothDampAngle(_followTarget.eulerAngles.x, _camera.transform.eulerAngles.x, ref _turnSmoothVelocity, 0.1f);
+            float angleY = Mathf.SmoothDampAngle(_followTarget.eulerAngles.y, _camera.transform.eulerAngles.y, ref _turnSmoothVelocity, 0.1f);
+            _followTarget.rotation = Quaternion.Euler(angleX, angleY, 0);
         }
 
         public void Look()
