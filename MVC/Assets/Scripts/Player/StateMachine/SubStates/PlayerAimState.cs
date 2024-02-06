@@ -1,3 +1,4 @@
+using MVC.Capabilities;
 using MVC.Controllers;
 using UnityEngine;
 
@@ -5,7 +6,7 @@ namespace MVC.Player.StateMachine.SuperStates
 {
     public class PlayerAimState : PlayerGroundedState
     {
-        private Transform _lockOnTarget;
+        private Targetable _lockOnTarget;
 
         public PlayerAimState(PlayerStateController stateController, string stateAnimationName) : base(stateController, stateAnimationName)
         {
@@ -15,7 +16,7 @@ namespace MVC.Player.StateMachine.SuperStates
         {
             base.OnEnter();
 
-            _lockOnTarget = GameController.Instance.GetClosestTarget().transform;
+            _lockOnTarget = GameController.Instance.GetClosestTarget();
         }
 
         public override void OnUpdate()
@@ -24,7 +25,7 @@ namespace MVC.Player.StateMachine.SuperStates
 
             if (stateController.InputReader.ShootInput)
             {
-                stateController.PlayerShoot.Shoot();
+                stateController.PlayerShoot.LockOnShoot(_lockOnTarget);
             }
 
             if (!stateController.InputReader.AimInput || _lockOnTarget == null)

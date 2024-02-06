@@ -1,3 +1,4 @@
+using MVC.Capabilities;
 using MVC.Controllers;
 using MVC.Factories;
 using MVC.Projectiles;
@@ -26,6 +27,16 @@ namespace MVC.Player
         private void Awake()
         {
             _characterData = _characterDataController.GetCharacterData(name);
+        }
+
+        public void LockOnShoot(Targetable target)
+        {
+            if (Time.time >= _nextFireTime)
+            {
+                _nextFireTime = Time.time + 1f / _characterData.fireRate;
+
+                _projectileFactory.GetProjectile(_projectile, _shootingOrigin, target);
+            }
         }
 
         public void Shoot()
