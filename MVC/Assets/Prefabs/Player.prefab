@@ -464,9 +464,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4274f9f078ef3fe4aa9d3dac20c41d4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _aim: {fileID: 6637000108114639433}
-  _rig: {fileID: 8102918587791197819}
-  _followTarget: {fileID: 0}
+  _aimSnap: 0.171
+  _aimCamera: {fileID: 0}
+  _lookingTarget: {fileID: 0}
   _aimConstraint: {fileID: 6637000108114639433}
 --- !u!114 &118352664815384648
 MonoBehaviour:
@@ -515,7 +515,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _projectile: {fileID: 2337146425098474599, guid: a5df6096402808746973c912ce04705f, type: 3}
   _characterDataController: {fileID: 11400000, guid: 1c1a503aa151ec14b80ee709d92bc8ef, type: 2}
-  _lookingAim: {fileID: 0}
   _shootingOrigin: {fileID: 3253044226228037279}
 --- !u!1001 &5402240032960302606
 PrefabInstance:
@@ -1532,7 +1531,7 @@ Animator:
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 8dee4ff41042a7f428014dae72e70e1f, type: 3}
   m_Controller: {fileID: 22100000, guid: 074cfb6d5a1975b44ac0aabb6e759a2a, type: 2}
-  m_CullingMode: 0
+  m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0

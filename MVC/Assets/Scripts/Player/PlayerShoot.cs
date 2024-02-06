@@ -29,16 +29,6 @@ namespace MVC.Player
             _characterData = _characterDataController.GetCharacterData(name);
         }
 
-        public void LockOnShoot(Targetable target)
-        {
-            if (Time.time >= _nextFireTime)
-            {
-                _nextFireTime = Time.time + 1f / _characterData.fireRate;
-
-                _projectileFactory.GetProjectile(_projectile, _shootingOrigin, target);
-            }
-        }
-
         public void Shoot()
         {
             if (Time.time >= _nextFireTime)
@@ -46,6 +36,16 @@ namespace MVC.Player
                 _nextFireTime = Time.time + 1f / _characterData.fireRate;
 
                 _projectileFactory.GetProjectile(_projectile, _shootingOrigin, GameController.Instance.GetClosestTarget());
+            }
+        }
+
+        public void Shoot(Targetable target)
+        {
+            if (Time.time >= _nextFireTime)
+            {
+                _nextFireTime = Time.time + 1f / _characterData.fireRate;
+
+                _projectileFactory.GetProjectile(_projectile, _shootingOrigin, target);
             }
         }
     }

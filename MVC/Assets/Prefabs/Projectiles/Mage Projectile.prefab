@@ -282,7 +282,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 0
-  m_CollisionDetection: 2
+  m_CollisionDetection: 1
 --- !u!114 &6601240628946093183
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -295,7 +295,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29308c1c4f8a82c44b207e3863a00669, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 65
+  _speed: 40
 --- !u!114 &2337146425098474599
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -310,7 +310,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _impactVFX: {fileID: 4449568415435313450, guid: 9fff83ce37da891489a0636c688de88c, type: 3}
   _muzzleVFX: {fileID: 4449568415435313450, guid: e71e7ba24e09e1845a14571b02a939a6, type: 3}
-  _velocity: 40
+  _velocity: 25
   _damage: 5
 --- !u!114 &-5646668175604671283
 MonoBehaviour:
