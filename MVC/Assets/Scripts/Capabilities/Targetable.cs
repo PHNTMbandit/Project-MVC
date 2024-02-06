@@ -8,21 +8,22 @@ namespace MVC.Capabilities
     [AddComponentMenu("Capabilities/Targetable")]
     public class Targetable : MonoBehaviour
     {
+        public AutoTargetUI AutoTargetUI { get; private set; }
+
         [BoxGroup("References"), SerializeField]
         private Renderer _target;
 
         private Camera _camera;
-        private AutoTargetUI _autoTargetUI;
 
         private void Awake()
         {
             _camera = Camera.main;
-            _autoTargetUI = GetComponent<AutoTargetUI>();
+            AutoTargetUI = GetComponent<AutoTargetUI>();
         }
 
         private void Start()
         {
-            _autoTargetUI.Initialise(transform);
+            AutoTargetUI.Initialise(transform);
         }
 
         public bool IsVisible()
@@ -37,11 +38,6 @@ namespace MVC.Capabilities
             {
                 return false;
             }
-        }
-
-        public void SetCurrentTarget(bool enable)
-        {
-            _autoTargetUI.SetAutoTargetIconEnabled(enable);
         }
     }
 }

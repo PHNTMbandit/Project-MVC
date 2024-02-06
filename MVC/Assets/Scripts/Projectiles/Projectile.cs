@@ -36,13 +36,12 @@ namespace MVC.Projectiles
 
         private void OnTriggerEnter(Collider other)
         {
+            ObjectPoolController.Instance.GetPooledObject(_impactVFX.name, transform.position);
+            _pooledObject.Disable();
+
             if (other.TryGetComponent(out Damageable damageable))
             {
-                ObjectPoolController.Instance.GetPooledObject(_impactVFX.name, transform.position);
-
                 damageable.Damage(_damage);
-
-                _pooledObject.Disable();
             }
         }
     }

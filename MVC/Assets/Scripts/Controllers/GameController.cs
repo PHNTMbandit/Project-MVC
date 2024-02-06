@@ -6,6 +6,8 @@ namespace MVC.Controllers
 {
     public class GameController : MonoBehaviour
     {
+        public Targetable LockedOnTarget { get; private set; }
+
         [SerializeField]
         private GameObject _player;
 
@@ -36,17 +38,14 @@ namespace MVC.Controllers
 
         #endregion
 
-        private void Update()
-        {
-            for (int i = 0; i < _enemies.Length; i++)
-            {
-                _enemies[i].SetCurrentTarget(GetClosestTarget() == _enemies[i]);
-            }
-        }
-
         public Targetable GetClosestTarget()
         {
             return EnemyTargeting.GetClosetTargetableToCentre(_player.transform, _enemies, _characterSelectionController.CurrentCharacter.targetingRange);
+        }
+
+        public void SetLockedOnTarget(Targetable targetable)
+        {
+            LockedOnTarget = targetable;
         }
     }
 }

@@ -17,12 +17,21 @@ namespace MVC.Player.StateMachine.SuperStates
             base.OnEnter();
 
             _lockOnTarget = GameController.Instance.GetClosestTarget();
+            GameController.Instance.SetLockedOnTarget(_lockOnTarget);
+        }
+
+        public override void OnExit()
+        {
+            base.OnExit();
+
+            GameController.Instance.SetLockedOnTarget(null);
         }
 
         public override void OnUpdate()
         {
             base.OnUpdate();
 
+            stateController.ThirdPersonCamera.LockOn(_lockOnTarget.transform);
             stateController.Animator.SetFloat("aim move input x", Mathf.Lerp(stateController.Animator.GetFloat("aim move input x"), stateController.InputReader.MoveInput.x, 4 * Time.deltaTime));
             stateController.Animator.SetFloat("aim move input y", Mathf.Lerp(stateController.Animator.GetFloat("aim move input y"), stateController.InputReader.MoveInput.y, 4 * Time.deltaTime));
 
@@ -41,7 +50,7 @@ namespace MVC.Player.StateMachine.SuperStates
         {
             base.OnFixedUpdate();
 
-            stateController.PlayerAim.LockOn(_lockOnTarget.transform);
+            stateController.PlayerAim.LockOnAim(_lockOnTarget.transform);
             stateController.PlayerMove.LockOnMove(stateController.InputReader.MoveInput, stateController.CharacterData.moveSpeed);
         }
     }

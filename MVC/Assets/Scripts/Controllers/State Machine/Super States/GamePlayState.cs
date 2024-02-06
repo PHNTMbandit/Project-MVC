@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace MVC.Controllers.StateMachine.SuperStates
 {
     public class GamePlayState : GameState
@@ -10,6 +12,7 @@ namespace MVC.Controllers.StateMachine.SuperStates
         {
             base.OnEnter();
 
+            Cursor.visible = false;
             stateController.PlayerInput.SwitchCurrentActionMap("Gameplay");
         }
 
