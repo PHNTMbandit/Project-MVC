@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace MVC.Controllers.StateMachine.SuperStates
 {
     public class GameMenuState : GameState
@@ -10,6 +12,7 @@ namespace MVC.Controllers.StateMachine.SuperStates
         {
             base.OnEnter();
 
+            Cursor.visible = true;
             stateController.PlayerInput.SwitchCurrentActionMap("UI");
         }
 

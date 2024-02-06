@@ -21,7 +21,7 @@ namespace MVC.Player
 
         private float _turnSmoothVelocity;
 
-        public void LockOn(Transform target)
+        public void LockOnAim(Transform target)
         {
             _aimCamera.LookAt = target;
             Vector3 direction = (target.position - transform.position).normalized;

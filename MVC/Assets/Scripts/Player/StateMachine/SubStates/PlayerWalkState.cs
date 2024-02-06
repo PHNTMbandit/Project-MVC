@@ -27,7 +27,7 @@ namespace MVC.Player.StateMachine.SuperStates
         {
             base.OnUpdate();
 
-            stateController.ThirdPersonCamera.UpdateCamera();
+            stateController.ThirdPersonCamera.FreeLook();
 
             if (GameController.Instance.GetClosestTarget() != null && stateController.InputReader.AimInput)
             {
