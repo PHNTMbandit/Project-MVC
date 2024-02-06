@@ -1,4 +1,5 @@
 using MVC.UI;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace MVC.Capabilities
@@ -7,11 +8,11 @@ namespace MVC.Capabilities
     [AddComponentMenu("Capabilities/Targetable")]
     public class Targetable : MonoBehaviour
     {
-        [field: SerializeField]
-        public Renderer Target { get; private set; }
+        [BoxGroup("References"), SerializeField]
+        private Renderer _target;
 
-        private AutoTargetUI _autoTargetUI;
         private Camera _camera;
+        private AutoTargetUI _autoTargetUI;
 
         private void Awake()
         {
@@ -21,14 +22,14 @@ namespace MVC.Capabilities
 
         private void Start()
         {
-            _autoTargetUI.Initialise(Target);
+            _autoTargetUI.Initialise(transform);
         }
 
         public bool IsVisible()
         {
             Plane[] planes = GeometryUtility.CalculateFrustumPlanes(_camera);
 
-            if (GeometryUtility.TestPlanesAABB(planes, Target.bounds))
+            if (GeometryUtility.TestPlanesAABB(planes, _target.bounds))
             {
                 return true;
             }

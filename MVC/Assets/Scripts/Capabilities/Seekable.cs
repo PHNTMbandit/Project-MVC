@@ -39,10 +39,9 @@ namespace MVC.Capabilities
                     }
                     else
                     {
-                        Vector3 direction = (_target.Target.bounds.center - transform.position).normalized;
+                        Vector3 direction = (_target.transform.position + new Vector3(0, 1, 0) - transform.position).normalized;
                         _rb.AddForce((direction * _speed) - _rb.velocity, ForceMode.Impulse);
                     }
-
                 }
             }
         }

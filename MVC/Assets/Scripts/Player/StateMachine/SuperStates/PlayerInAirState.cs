@@ -12,6 +12,8 @@ namespace MVC.Player.StateMachine.SuperStates
         {
             base.OnUpdate();
 
+            stateController.ThirdPersonCamera.UpdateCamera();
+
             if (stateController.PlayerJump.IsGrounded())
             {
                 stateController.StateMachine.ChangeState(stateController.IdleState);

@@ -1,21 +1,37 @@
+using MVC.Capabilities;
+using MVC.Controllers;
+using UnityEngine;
+
 namespace MVC.Player.StateMachine.SuperStates
 {
     public class PlayerAimState : PlayerGroundedState
     {
+        private Targetable _lockOnTarget;
+
         public PlayerAimState(PlayerStateController stateController, string stateAnimationName) : base(stateController, stateAnimationName)
         {
+        }
+
+        public override void OnEnter()
+        {
+            base.OnEnter();
+
+            _lockOnTarget = GameController.Instance.GetClosestTarget();
         }
 
         public override void OnUpdate()
         {
             base.OnUpdate();
 
+            stateController.Animator.SetFloat("aim move input x", Mathf.Lerp(stateController.Animator.GetFloat("aim move input x"), stateController.InputReader.MoveInput.x, 4 * Time.deltaTime));
+            stateController.Animator.SetFloat("aim move input y", Mathf.Lerp(stateController.Animator.GetFloat("aim move input y"), stateController.InputReader.MoveInput.y, 4 * Time.deltaTime));
+
             if (stateController.InputReader.ShootInput)
             {
-                stateController.PlayerShoot.Shoot();
+                stateController.PlayerShoot.Shoot(_lockOnTarget);
             }
 
-            if (!stateController.InputReader.AimInput)
+            if (!stateController.InputReader.AimInput || !_lockOnTarget.isActiveAndEnabled)
             {
                 stateController.StateMachine.ChangeState(stateController.IdleState);
             }
@@ -25,8 +41,8 @@ namespace MVC.Player.StateMachine.SuperStates
         {
             base.OnFixedUpdate();
 
-            stateController.PlayerAim.Aim();
-            stateController.PlayerMove.Move(stateController.InputReader.MoveInput, stateController.CharacterData.moveSpeed);
+            stateController.PlayerAim.LockOn(_lockOnTarget.transform);
+            stateController.PlayerMove.LockOnMove(stateController.InputReader.MoveInput, stateController.CharacterData.moveSpeed);
         }
     }
 }

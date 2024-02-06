@@ -1,3 +1,4 @@
+using MVC.Capabilities;
 using MVC.Controllers;
 using MVC.Factories;
 using MVC.Projectiles;
@@ -7,11 +8,9 @@ using UnityEngine;
 
 namespace MVC.Player
 {
-    [RequireComponent(typeof(Animator))]
     [AddComponentMenu("Player/Player Shoot")]
     public class PlayerShoot : MonoBehaviour
     {
-
         [BoxGroup("Settings"), SerializeField]
         private Projectile _projectile;
 
@@ -19,7 +18,7 @@ namespace MVC.Player
         private CharacterDataController _characterDataController;
 
         [FoldoutGroup("References"), SerializeField]
-        private Transform _lookingAim, _shootingOrigin;
+        private Transform _shootingOrigin;
 
         private CharacterData _characterData;
         private float _nextFireTime = 0f;
@@ -37,6 +36,16 @@ namespace MVC.Player
                 _nextFireTime = Time.time + 1f / _characterData.fireRate;
 
                 _projectileFactory.GetProjectile(_projectile, _shootingOrigin, GameController.Instance.GetClosestTarget());
+            }
+        }
+
+        public void Shoot(Targetable target)
+        {
+            if (Time.time >= _nextFireTime)
+            {
+                _nextFireTime = Time.time + 1f / _characterData.fireRate;
+
+                _projectileFactory.GetProjectile(_projectile, _shootingOrigin, target);
             }
         }
     }

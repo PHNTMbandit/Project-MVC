@@ -14,13 +14,18 @@ namespace MVC.Player.StateMachine
     public class PlayerStateController : MonoBehaviour
     {
         [field: FoldoutGroup("References"), SerializeField]
+        public Animator Animator { get; private set; }
+
+        [field: FoldoutGroup("References"), SerializeField]
+        public ThirdPersonCamera ThirdPersonCamera { get; private set; }
+
+        [field: FoldoutGroup("References"), SerializeField]
         public InputReader InputReader { get; private set; }
 
         [FoldoutGroup("References"), SerializeField]
         private CharacterDataController _characterDataController;
 
         public CharacterData CharacterData { get; private set; }
-        public Animator Animator { get; private set; }
         public PlayerStateMachine StateMachine { get; private set; }
         public PlayerAimState AimState { get; private set; }
         public PlayerIdleState IdleState { get; private set; }
@@ -39,7 +44,6 @@ namespace MVC.Player.StateMachine
             InAirState = new(this, "jumping");
             WalkState = new(this, "walking");
 
-            Animator = GetComponent<Animator>();
             PlayerAim = GetComponent<PlayerAim>();
             PlayerJump = GetComponent<PlayerJump>();
             PlayerMove = GetComponent<PlayerMove>();

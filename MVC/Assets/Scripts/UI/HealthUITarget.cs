@@ -14,11 +14,9 @@ namespace MVC.UI
         private Vector3 _offset;
 
         [BoxGroup("References"), SerializeField]
-        private Canvas _HUD;
-
-        [BoxGroup("References"), SerializeField]
         private HealthBar _healthBarPrefab;
 
+        private Canvas _HUD;
         private Health _target;
         private HealthBar _healthBar;
         private readonly WorldUIFactory _worldUIFactory = new();
@@ -26,11 +24,12 @@ namespace MVC.UI
         private void Awake()
         {
             _target = GetComponent<Health>();
+            _HUD = GameObject.FindGameObjectWithTag("HUD").GetComponent<Canvas>();
         }
 
         private void Start()
         {
-            _healthBar = _worldUIFactory.GetUI(_healthBarPrefab, transform.position, _HUD.transform, _offset);
+            _healthBar = _worldUIFactory.GetUI(_healthBarPrefab, transform, _HUD.transform, _offset);
             _healthBar.Initialise(_target);
         }
 
