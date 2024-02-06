@@ -28,11 +28,10 @@ namespace MVC.Player
             _animator.SetFloat("speed", Mathf.Clamp(_rb.velocity.magnitude, 0.01f, 100));
         }
 
-        public void Move(Vector2 input, float moveSpeed, Transform target)
+        public void LockOnMove(Vector2 input, float moveSpeed)
         {
-            Vector3 moveInput = new Vector3(input.x, 0, input.y).normalized;
-            Vector3 direction = (target.position - transform.position).normalized;
-            _rb.AddForce(moveSpeed * moveInput.magnitude * direction, ForceMode.Force);
+            Vector3 direction = transform.forward * input.y + transform.right * input.x;
+            _rb.AddForce(direction * moveSpeed, ForceMode.Force);
         }
 
         public void Move(Vector2 input, float moveSpeed)

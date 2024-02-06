@@ -28,7 +28,7 @@ namespace MVC.Player.StateMachine.SuperStates
                 stateController.PlayerShoot.LockOnShoot(_lockOnTarget);
             }
 
-            if (!stateController.InputReader.AimInput || _lockOnTarget == null)
+            if (!stateController.InputReader.AimInput || !_lockOnTarget.isActiveAndEnabled)
             {
                 stateController.StateMachine.ChangeState(stateController.IdleState);
             }
@@ -39,7 +39,7 @@ namespace MVC.Player.StateMachine.SuperStates
             base.OnFixedUpdate();
 
             stateController.PlayerAim.LockOn(_lockOnTarget.transform);
-            stateController.PlayerMove.Move(stateController.InputReader.MoveInput, stateController.CharacterData.moveSpeed);
+            stateController.PlayerMove.LockOnMove(stateController.InputReader.MoveInput, stateController.CharacterData.moveSpeed);
         }
     }
 }
