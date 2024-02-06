@@ -7869,14 +7869,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 48024811020514201, guid: eee3fea0de8596e4d87aa3930d3da4e7, type: 3}
-      propertyPath: onZeroHealth.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1855598846}
-    - target: {fileID: 48024811020514201, guid: eee3fea0de8596e4d87aa3930d3da4e7, type: 3}
-      propertyPath: onZeroHealth.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: DestroySelf
-      objectReference: {fileID: 0}
     - target: {fileID: 1436811063528029027, guid: eee3fea0de8596e4d87aa3930d3da4e7, type: 3}
       propertyPath: m_Name
       value: Skeleton Minion
@@ -7921,46 +7913,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7532909204592508091, guid: eee3fea0de8596e4d87aa3930d3da4e7, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7532909204592508091, guid: eee3fea0de8596e4d87aa3930d3da4e7, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7532909204592508091, guid: eee3fea0de8596e4d87aa3930d3da4e7, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7532909204592508091, guid: eee3fea0de8596e4d87aa3930d3da4e7, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7532909204592508091, guid: eee3fea0de8596e4d87aa3930d3da4e7, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7532909204592508091, guid: eee3fea0de8596e4d87aa3930d3da4e7, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eee3fea0de8596e4d87aa3930d3da4e7, type: 3}
---- !u!114 &1855598846 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3856885561911906973, guid: eee3fea0de8596e4d87aa3930d3da4e7, type: 3}
-  m_PrefabInstance: {fileID: 1855598845}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7a3ec9e1d5e86f4fba5433cf33dc986, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1855598849 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6440766734931382771, guid: eee3fea0de8596e4d87aa3930d3da4e7, type: 3}

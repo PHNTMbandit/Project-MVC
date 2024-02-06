@@ -23,9 +23,9 @@ namespace MVC.UI
             _HUD = GameObject.FindGameObjectWithTag("HUD").GetComponent<Canvas>();
         }
 
-        public void Initialise(Renderer target)
+        public void Initialise(Transform target)
         {
-            _targetIcon = _worldUIFactory.GetUI(_targetIconPrefab, target.bounds.center, _HUD.transform, _offset);
+            _targetIcon = _worldUIFactory.GetUI(_targetIconPrefab, target.transform, _HUD.transform, _offset);
             _targetIcon.gameObject.SetActive(false);
         }
 

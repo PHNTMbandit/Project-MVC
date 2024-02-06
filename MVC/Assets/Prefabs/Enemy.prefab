@@ -107,7 +107,7 @@ MonoBehaviour:
   onZeroHealth:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 3856885561911906973}
         m_TargetAssemblyTypeName: MVC.Capabilities.Damageable, Assembly-CSharp
         m_MethodName: DestroySelf
         m_Mode: 1
@@ -146,7 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2c6c047509757b4fa329f786de343f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Target>k__BackingField: {fileID: 3301438164679175545}
+  _target: {fileID: 3301438164679175545}
 --- !u!114 &3862733980199901575
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -159,7 +159,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f47192887bd853e4a9b203b0871ff6a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _offset: {x: 0, y: 0, z: 0}
+  _offset: {x: 0, y: 1, z: 0}
   _targetIconPrefab: {fileID: 4577295798999751761, guid: 57b461d4c7dd95c43b47f9b33bb4efb6, type: 3}
 --- !u!114 &7515200401274527517
 MonoBehaviour:
@@ -205,15 +205,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3ef10282e72ba1140b5b2d0e5747543c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -12.849598
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3ef10282e72ba1140b5b2d0e5747543c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.8903003
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3ef10282e72ba1140b5b2d0e5747543c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.3974924
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3ef10282e72ba1140b5b2d0e5747543c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -221,15 +221,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3ef10282e72ba1140b5b2d0e5747543c, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3ef10282e72ba1140b5b2d0e5747543c, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3ef10282e72ba1140b5b2d0e5747543c, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3ef10282e72ba1140b5b2d0e5747543c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

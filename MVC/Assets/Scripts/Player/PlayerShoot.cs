@@ -18,7 +18,7 @@ namespace MVC.Player
         private CharacterDataController _characterDataController;
 
         [FoldoutGroup("References"), SerializeField]
-        private Transform _lookingAim, _shootingOrigin;
+        private Transform _shootingOrigin;
 
         private CharacterData _characterData;
         private float _nextFireTime = 0f;

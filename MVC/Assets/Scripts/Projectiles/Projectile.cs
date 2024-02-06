@@ -38,7 +38,7 @@ namespace MVC.Projectiles
         {
             if (other.TryGetComponent(out Damageable damageable))
             {
-                ObjectPoolController.Instance.GetPooledObject(_impactVFX.name, other.transform.position);
+                ObjectPoolController.Instance.GetPooledObject(_impactVFX.name, transform.position);
 
                 damageable.Damage(_damage);
 
