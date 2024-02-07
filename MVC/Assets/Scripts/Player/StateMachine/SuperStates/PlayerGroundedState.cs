@@ -1,5 +1,3 @@
-using MVC.Controllers;
-
 namespace MVC.Player.StateMachine.SuperStates
 {
     public class PlayerGroundedState : PlayerState

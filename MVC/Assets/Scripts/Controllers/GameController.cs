@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using MVC.Capabilities;
+using MVC.Data;
 using MVC.Utilities;
 using UnityEngine;
 
@@ -6,16 +8,14 @@ namespace MVC.Controllers
 {
     public class GameController : MonoBehaviour
     {
+        public List<Targetable> Enemies { get; private set; } = new();
         public Targetable LockedOnTarget { get; private set; }
 
         [field: SerializeField]
-        public GameObject Player { get; private set; }
+        public Health Player { get; private set; }
 
         [SerializeField]
         private CharacterSelectionController _characterSelectionController;
-
-        [SerializeField]
-        private Targetable[] _enemies;
 
         #region Singleton
 
@@ -40,7 +40,7 @@ namespace MVC.Controllers
 
         public Targetable GetClosestTarget()
         {
-            return EnemyTargeting.GetClosetTargetableToCentre(Player.transform, _enemies, _characterSelectionController.CurrentCharacter.targetingRange);
+            return EnemyTargeting.GetClosetTargetableToCentre(Player.transform, Enemies, _characterSelectionController.CurrentCharacter.targetingRange);
         }
 
         public void SetLockedOnTarget(Targetable targetable)

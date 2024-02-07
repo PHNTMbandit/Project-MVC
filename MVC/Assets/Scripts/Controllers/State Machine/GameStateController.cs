@@ -8,6 +8,8 @@ namespace MVC.Controllers.StateMachine
     public class GameStateController : MonoBehaviour
     {
         public GameStateMachine StateMachine { get; private set; }
+        public GameOverState GameOverState { get; private set; }
+        public GameVictoryState VictoryState { get; private set; }
         public GameMenuState MenuState { get; private set; }
         public GamePlayState PlayState { get; private set; }
 
@@ -20,8 +22,10 @@ namespace MVC.Controllers.StateMachine
         private void Awake()
         {
             StateMachine = new();
+            GameOverState = new(this);
             MenuState = new(this);
             PlayState = new(this);
+            VictoryState = new(this);
         }
 
         private void Start()
@@ -42,6 +46,11 @@ namespace MVC.Controllers.StateMachine
         public bool IsMenusOpen()
         {
             return _UIPanels.Any(i => i.gameObject.activeSelf);
+        }
+
+        public void ChangeToVictoryState()
+        {
+            StateMachine.ChangeState(VictoryState);
         }
     }
 }

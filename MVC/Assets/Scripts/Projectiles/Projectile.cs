@@ -29,14 +29,14 @@ namespace MVC.Projectiles
 
         public void Launch(Transform origin)
         {
-            ObjectPoolController.Instance.GetPooledObject(_muzzleVFX.name, origin.position);
+            ObjectPoolController.Instance.GetPooledObject<Projectile>(_muzzleVFX.name, origin.position);
 
             _rb.AddForce(origin.forward * _velocity, ForceMode.Impulse);
         }
 
         private void OnTriggerEnter(Collider other)
         {
-            ObjectPoolController.Instance.GetPooledObject(_impactVFX.name, transform.position);
+            ObjectPoolController.Instance.GetPooledObject<Projectile>(_impactVFX.name, transform.position);
             _pooledObject.Disable();
 
             if (other.TryGetComponent(out Damageable damageable))

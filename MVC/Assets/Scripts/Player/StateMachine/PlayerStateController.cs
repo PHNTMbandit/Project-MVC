@@ -1,4 +1,5 @@
 using MVC.Character;
+using MVC.Data;
 using MVC.Input;
 using MVC.Player.StateMachine.SubStates;
 using MVC.Player.StateMachine.SuperStates;
@@ -8,6 +9,7 @@ using UnityEngine;
 
 namespace MVC.Player.StateMachine
 {
+    [RequireComponent(typeof(Health))]
     [RequireComponent(typeof(CharacterAim))]
     [RequireComponent(typeof(CharacterJump))]
     [RequireComponent(typeof(CharacterMove))]
@@ -30,9 +32,11 @@ namespace MVC.Player.StateMachine
         [FoldoutGroup("References"), SerializeField]
         private CharacterDataController _characterDataController;
 
+        public Health Health { get; private set; }
         public CharacterData CharacterData { get; private set; }
         public PlayerStateMachine StateMachine { get; private set; }
         public PlayerAimState AimState { get; private set; }
+        public PlayerDeathState DeathState { get; private set; }
         public PlayerIdleState IdleState { get; private set; }
         public PlayerInAirState InAirState { get; private set; }
         public PlayerWalkState WalkState { get; private set; }
@@ -45,10 +49,12 @@ namespace MVC.Player.StateMachine
         {
             StateMachine = new();
             AimState = new(this, "aiming");
+            DeathState = new(this, "dead");
             IdleState = new(this, "idle");
             InAirState = new(this, "jumping");
             WalkState = new(this, "walking");
 
+            Health = GetComponent<Health>();
             PlayerAim = GetComponent<CharacterAim>();
             PlayerJump = GetComponent<CharacterJump>();
             PlayerMove = GetComponent<CharacterMove>();

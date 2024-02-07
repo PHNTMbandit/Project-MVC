@@ -55,7 +55,7 @@ namespace MVC.Controllers
             }
         }
 
-        public GameObject GetPooledObject(string tag, Vector3 position)
+        public T GetPooledObject<T>(string tag, Vector3 position) where T : MonoBehaviour
         {
             if (!poolDictionary.ContainsKey(tag))
             {
@@ -70,7 +70,7 @@ namespace MVC.Controllers
 
             poolDictionary[tag].Enqueue(objectToSpawn);
 
-            return objectToSpawn;
+            return objectToSpawn.GetComponent<T>();
         }
 
         public GameObject GetPooledObject(string tag, Vector3 position, Quaternion rotation)

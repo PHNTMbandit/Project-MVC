@@ -12,7 +12,7 @@ namespace MVC.Enemy.StateMachine.SubStates
         {
             base.OnUpdate();
 
-            if (!stateController.EnemyMelee.IsInRange())
+            if (!stateController.EnemyMelee.IsInRange() || stateController.IsTargetDead())
             {
                 stateController.StateMachine.ChangeState(stateController.IdleState);
             }

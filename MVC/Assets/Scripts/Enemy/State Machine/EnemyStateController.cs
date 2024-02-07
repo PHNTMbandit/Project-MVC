@@ -1,11 +1,14 @@
+using MVC.Capabilities;
 using MVC.Character;
 using MVC.Controllers;
+using MVC.Data;
 using MVC.Enemy.StateMachine.SubStates;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace MVC.Enemy.StateMachine
 {
+    [RequireComponent(typeof(Targetable))]
     [RequireComponent(typeof(CharacterMelee))]
     [RequireComponent(typeof(CharacterMove))]
     [AddComponentMenu("Enemy/Enemy State Controller")]
@@ -24,6 +27,8 @@ namespace MVC.Enemy.StateMachine
         public CharacterMelee EnemyMelee { get; private set; }
         public CharacterMove EnemyMove { get; private set; }
 
+        private Targetable _targetable;
+
         private void Awake()
         {
             StateMachine = new();
@@ -33,6 +38,7 @@ namespace MVC.Enemy.StateMachine
 
             EnemyMelee = GetComponent<CharacterMelee>();
             EnemyMove = GetComponent<CharacterMove>();
+            _targetable = GetComponent<Targetable>();
         }
 
         private void Start()
@@ -52,8 +58,21 @@ namespace MVC.Enemy.StateMachine
 
         public void MoveToPlayer()
         {
-            Transform target = GameController.Instance.Player.transform;
-            EnemyMove.Move(target, MoveSpeed);
+            if (!IsTargetDead())
+            {
+                Transform target = GameController.Instance.Player.transform;
+                EnemyMove.Move(target, MoveSpeed);
+            }
+        }
+
+        public bool IsTargetDead()
+        {
+            return GameController.Instance.Player.CurrentHealth <= 0;
+        }
+
+        public void RemoveEnemy()
+        {
+            GameController.Instance.Enemies.Remove(_targetable);
         }
     }
 }
