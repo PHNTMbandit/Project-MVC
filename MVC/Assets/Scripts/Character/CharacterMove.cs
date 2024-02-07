@@ -31,6 +31,14 @@ namespace MVC.Character
             return _rb.velocity != Vector3.zero;
         }
 
+        public void Move(Transform target, float moveSpeed)
+        {
+            Vector3 direction = (target.position - transform.position).normalized;
+            _rb.AddForce(direction * moveSpeed, ForceMode.Force);
+
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(direction), Time.deltaTime * _turnSmooth * 500);
+        }
+
         public void Move(Transform target, Vector3 direction, float moveSpeed, float damper)
         {
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + target.eulerAngles.y;

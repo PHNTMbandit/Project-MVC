@@ -6,6 +6,7 @@ using UnityEngine;
 
 namespace MVC.Enemy.StateMachine
 {
+    [RequireComponent(typeof(CharacterMelee))]
     [RequireComponent(typeof(CharacterMove))]
     [AddComponentMenu("Enemy/Enemy State Controller")]
     public class EnemyStateController : MonoBehaviour
@@ -17,16 +18,20 @@ namespace MVC.Enemy.StateMachine
         public Animator Animator { get; private set; }
 
         public EnemyStateMachine StateMachine { get; private set; }
+        public EnemyAttackState AttackState { get; private set; }
         public EnemyIdleState IdleState { get; private set; }
         public EnemyMoveState MoveState { get; private set; }
+        public CharacterMelee EnemyMelee { get; private set; }
         public CharacterMove EnemyMove { get; private set; }
 
         private void Awake()
         {
             StateMachine = new();
+            AttackState = new(this, "attacking");
             IdleState = new(this, "idle");
             MoveState = new(this, "walking");
 
+            EnemyMelee = GetComponent<CharacterMelee>();
             EnemyMove = GetComponent<CharacterMove>();
         }
 
@@ -48,8 +53,7 @@ namespace MVC.Enemy.StateMachine
         public void MoveToPlayer()
         {
             Transform target = GameController.Instance.Player.transform;
-            Vector3 direction = (target.transform.position - transform.position).normalized;
-            EnemyMove.Move(target, direction, MoveSpeed, 1);
+            EnemyMove.Move(target, MoveSpeed);
         }
     }
 }

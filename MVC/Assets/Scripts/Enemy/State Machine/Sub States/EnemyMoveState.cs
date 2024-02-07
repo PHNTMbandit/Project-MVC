@@ -1,4 +1,5 @@
 using MVC.Enemy.StateMachine.SuperStates;
+using UnityEngine;
 
 namespace MVC.Enemy.StateMachine.SubStates
 {
@@ -11,6 +12,11 @@ namespace MVC.Enemy.StateMachine.SubStates
         public override void OnUpdate()
         {
             base.OnUpdate();
+
+            if (stateController.EnemyMelee.IsInRange())
+            {
+                stateController.StateMachine.ChangeState(stateController.AttackState);
+            }
 
             if (!stateController.EnemyMove.IsMoving())
             {
