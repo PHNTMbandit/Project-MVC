@@ -18,7 +18,7 @@ MonoBehaviour:
       fireRate: 2
       targetingRange: 75
       moveSpeed: 80
-      jumpForce: 32
+      jumpForce: 10
       airMoveSpeed: 45
     - name: Knight
       fireRate: 1
@@ -30,7 +30,7 @@ MonoBehaviour:
       fireRate: 3.8
       targetingRange: 70
       moveSpeed: 65
-      jumpForce: 28
+      jumpForce: 13
       airMoveSpeed: 45
     - name: Rogue
       fireRate: 6

@@ -19,6 +19,7 @@ namespace MVC.Player.StateMachine.SubStates
 
             _lockOnTarget = GameController.Instance.GetClosestTarget();
             GameController.Instance.SetLockedOnTarget(_lockOnTarget);
+            stateController.InputReader.onJump.AddListener(stateController.PlayerJump.Jump);
         }
 
         public override void OnExit()
@@ -26,6 +27,7 @@ namespace MVC.Player.StateMachine.SubStates
             base.OnExit();
 
             GameController.Instance.SetLockedOnTarget(null);
+            stateController.InputReader.onJump.RemoveAllListeners();
         }
 
         public override void OnUpdate()
