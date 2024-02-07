@@ -1,4 +1,6 @@
+using MVC.Character;
 using MVC.Input;
+using MVC.Player.StateMachine.SubStates;
 using MVC.Player.StateMachine.SuperStates;
 using MVC.Utilities;
 using Sirenix.OdinInspector;
@@ -6,13 +8,16 @@ using UnityEngine;
 
 namespace MVC.Player.StateMachine
 {
-    [RequireComponent(typeof(PlayerAim))]
-    [RequireComponent(typeof(PlayerJump))]
-    [RequireComponent(typeof(PlayerMove))]
-    [RequireComponent(typeof(PlayerShoot))]
+    [RequireComponent(typeof(CharacterAim))]
+    [RequireComponent(typeof(CharacterJump))]
+    [RequireComponent(typeof(CharacterMove))]
+    [RequireComponent(typeof(CharacterShoot))]
     [AddComponentMenu("Player/Player State Controller")]
     public class PlayerStateController : MonoBehaviour
     {
+        [field: FoldoutGroup("References"), SerializeField]
+        public Transform FollowTarget { get; private set; }
+
         [field: FoldoutGroup("References"), SerializeField]
         public Animator Animator { get; private set; }
 
@@ -31,10 +36,10 @@ namespace MVC.Player.StateMachine
         public PlayerIdleState IdleState { get; private set; }
         public PlayerInAirState InAirState { get; private set; }
         public PlayerWalkState WalkState { get; private set; }
-        public PlayerAim PlayerAim { get; private set; }
-        public PlayerJump PlayerJump { get; private set; }
-        public PlayerMove PlayerMove { get; private set; }
-        public PlayerShoot PlayerShoot { get; private set; }
+        public CharacterAim PlayerAim { get; private set; }
+        public CharacterJump PlayerJump { get; private set; }
+        public CharacterMove PlayerMove { get; private set; }
+        public CharacterShoot PlayerShoot { get; private set; }
 
         private void Awake()
         {
@@ -44,10 +49,10 @@ namespace MVC.Player.StateMachine
             InAirState = new(this, "jumping");
             WalkState = new(this, "walking");
 
-            PlayerAim = GetComponent<PlayerAim>();
-            PlayerJump = GetComponent<PlayerJump>();
-            PlayerMove = GetComponent<PlayerMove>();
-            PlayerShoot = GetComponent<PlayerShoot>();
+            PlayerAim = GetComponent<CharacterAim>();
+            PlayerJump = GetComponent<CharacterJump>();
+            PlayerMove = GetComponent<CharacterMove>();
+            PlayerShoot = GetComponent<CharacterShoot>();
             CharacterData = _characterDataController.GetCharacterData(name);
         }
 

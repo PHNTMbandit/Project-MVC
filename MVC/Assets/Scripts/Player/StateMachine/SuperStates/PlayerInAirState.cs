@@ -26,7 +26,11 @@ namespace MVC.Player.StateMachine.SuperStates
 
             if (stateController.InputReader.MoveInput != Vector2.zero)
             {
-                stateController.PlayerMove.Move(stateController.InputReader.MoveInput, stateController.CharacterData.airMoveSpeed);
+                Vector3 input = stateController.InputReader.MoveInput;
+                stateController.PlayerMove.Move(stateController.FollowTarget,
+                                                new Vector3(input.x, 0, input.y).normalized,
+                                                stateController.CharacterData.airMoveSpeed,
+                                                stateController.InputReader.MoveInput.magnitude);
             }
         }
     }

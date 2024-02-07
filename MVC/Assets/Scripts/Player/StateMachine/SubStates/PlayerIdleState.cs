@@ -1,7 +1,8 @@
 using MVC.Controllers;
 using UnityEngine;
+using MVC.Player.StateMachine.SuperStates;
 
-namespace MVC.Player.StateMachine.SuperStates
+namespace MVC.Player.StateMachine.SubStates
 {
     public class PlayerIdleState : PlayerGroundedState
     {

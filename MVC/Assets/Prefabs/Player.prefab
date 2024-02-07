@@ -131,11 +131,11 @@ GameObject:
   - component: {fileID: 1795627707628529358}
   - component: {fileID: 1814804639107423154}
   - component: {fileID: 4690311292219008041}
-  - component: {fileID: 7277304307387115181}
   - component: {fileID: 643793917013290411}
   - component: {fileID: 118352664815384648}
   - component: {fileID: 5885532938596380077}
   - component: {fileID: 8406825151057278154}
+  - component: {fileID: 7277304307387115181}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -413,8 +413,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bde58075a47cf3d4d9678f27701fb021, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 100
-  _currentHealth: 100
+  _maxHealth: 150
+  _currentHealth: 150
   onHealthChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -436,22 +436,6 @@ MonoBehaviour:
   onDamaged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &7277304307387115181
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8625886656973028427}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b94bea076ea96004cb7c90de462059af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <Animator>k__BackingField: {fileID: 7869314242951249722}
-  <ThirdPersonCamera>k__BackingField: {fileID: 0}
-  <InputReader>k__BackingField: {fileID: 11400000, guid: fe1a79578ad7d184ab9d378275ab8f3d, type: 2}
-  _characterDataController: {fileID: 11400000, guid: 1c1a503aa151ec14b80ee709d92bc8ef, type: 2}
 --- !u!114 &643793917013290411
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -464,7 +448,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4274f9f078ef3fe4aa9d3dac20c41d4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _aimSnap: 0.171
+  _aimSnap: 250
   _aimCamera: {fileID: 0}
   _lookingTarget: {fileID: 0}
   _aimConstraint: {fileID: 6637000108114639433}
@@ -500,7 +484,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _turnSmooth: 0.175
   _animator: {fileID: 7869314242951249722}
-  _followTarget: {fileID: 0}
 --- !u!114 &8406825151057278154
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -516,6 +499,23 @@ MonoBehaviour:
   _projectile: {fileID: 2337146425098474599, guid: a5df6096402808746973c912ce04705f, type: 3}
   _characterDataController: {fileID: 11400000, guid: 1c1a503aa151ec14b80ee709d92bc8ef, type: 2}
   _shootingOrigin: {fileID: 3253044226228037279}
+--- !u!114 &7277304307387115181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8625886656973028427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b94bea076ea96004cb7c90de462059af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <FollowTarget>k__BackingField: {fileID: 0}
+  <Animator>k__BackingField: {fileID: 7869314242951249722}
+  <ThirdPersonCamera>k__BackingField: {fileID: 0}
+  <InputReader>k__BackingField: {fileID: 11400000, guid: fe1a79578ad7d184ab9d378275ab8f3d, type: 2}
+  _characterDataController: {fileID: 11400000, guid: 1c1a503aa151ec14b80ee709d92bc8ef, type: 2}
 --- !u!1001 &5402240032960302606
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1,7 +1,8 @@
 using MVC.Controllers;
 using UnityEngine;
+using MVC.Player.StateMachine.SuperStates;
 
-namespace MVC.Player.StateMachine.SuperStates
+namespace MVC.Player.StateMachine.SubStates
 {
     public class PlayerWalkState : PlayerGroundedState
     {
@@ -49,8 +50,11 @@ namespace MVC.Player.StateMachine.SuperStates
         {
             base.OnFixedUpdate();
 
-            stateController.PlayerMove.Move(stateController.InputReader.MoveInput, stateController.CharacterData.moveSpeed);
-            stateController.PlayerMove.Turn(stateController.InputReader.MoveInput);
+            Vector3 input = stateController.InputReader.MoveInput;
+            stateController.PlayerMove.Move(stateController.FollowTarget,
+                                            new Vector3(input.x, 0, input.y).normalized,
+                                            stateController.CharacterData.moveSpeed,
+                                            stateController.InputReader.MoveInput.magnitude);
         }
     }
 }
