@@ -1,8 +1,9 @@
 using MVC.Capabilities;
 using MVC.Controllers;
+using MVC.Player.StateMachine.SuperStates;
 using UnityEngine;
 
-namespace MVC.Player.StateMachine.SuperStates
+namespace MVC.Player.StateMachine.SubStates
 {
     public class PlayerAimState : PlayerGroundedState
     {

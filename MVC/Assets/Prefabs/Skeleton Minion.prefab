@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 48024811020514201}
   - component: {fileID: 3856885561911906973}
   - component: {fileID: 6440766734931382771}
+  - component: {fileID: 3153339788037788148}
+  - component: {fileID: 7211906688539155889}
   - component: {fileID: 3862733980199901575}
   - component: {fileID: 7515200401274527517}
   m_Layer: 8
@@ -171,6 +173,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _target: {fileID: 3301438164679175545}
+--- !u!114 &3153339788037788148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1436811063528029027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b1be0825372ca24d88bbc11f55f98bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _turnSmooth: 0.2
+  _animator: {fileID: 4497523546607347393}
+--- !u!114 &7211906688539155889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1436811063528029027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca29f4f611d7cad4bbaac4f27be6ca44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <MoveSpeed>k__BackingField: 9.8
+  <Animator>k__BackingField: {fileID: 4497523546607347393}
 --- !u!114 &3862733980199901575
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -585,6 +615,11 @@ Transform:
 --- !u!4 &4165984799481773083 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -2967747473156249781, guid: 3ef10282e72ba1140b5b2d0e5747543c, type: 3}
+  m_PrefabInstance: {fileID: 7998670564086307664}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &4497523546607347393 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 3ef10282e72ba1140b5b2d0e5747543c, type: 3}
   m_PrefabInstance: {fileID: 7998670564086307664}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &4888987310495719707 stripped
