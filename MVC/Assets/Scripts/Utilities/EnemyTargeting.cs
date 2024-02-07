@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using MVC.Capabilities;
 using UnityEngine;
 
@@ -5,26 +6,30 @@ namespace MVC.Utilities
 {
     public static class EnemyTargeting
     {
-        public static Targetable GetClosetTargetableToCentre(Transform origin, Targetable[] targetables, float minDistance)
+        public static Targetable GetClosetTargetableToCentre(Transform origin, List<Targetable> targetables, float minDistance)
         {
             Targetable closetTarget = null;
             Vector3 currentPos = origin.position;
 
-            foreach (var target in targetables)
+            if (targetables != null)
             {
-                if (target.IsVisible())
+                foreach (var target in targetables)
                 {
-                    if (target.isActiveAndEnabled)
+                    if (target.IsVisible())
                     {
-                        float distance = Vector3.Distance(target.transform.position, currentPos);
-                        if (distance < minDistance)
+                        if (target.isActiveAndEnabled)
                         {
-                            closetTarget = target;
-                            minDistance = distance;
+                            float distance = Vector3.Distance(target.transform.position, currentPos);
+                            if (distance < minDistance)
+                            {
+                                closetTarget = target;
+                                minDistance = distance;
+                            }
                         }
                     }
                 }
             }
+
             return closetTarget;
         }
     }
