@@ -1,5 +1,6 @@
 using MVC.Character;
 using MVC.Controllers;
+using MVC.Data;
 using MVC.Enemy.StateMachine.SubStates;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -52,8 +53,16 @@ namespace MVC.Enemy.StateMachine
 
         public void MoveToPlayer()
         {
-            Transform target = GameController.Instance.Player.transform;
-            EnemyMove.Move(target, MoveSpeed);
+            if (!IsTargetDead())
+            {
+                Transform target = GameController.Instance.Player.transform;
+                EnemyMove.Move(target, MoveSpeed);
+            }
+        }
+
+        public bool IsTargetDead()
+        {
+            return GameController.Instance.Player.CurrentHealth <= 0;
         }
     }
 }

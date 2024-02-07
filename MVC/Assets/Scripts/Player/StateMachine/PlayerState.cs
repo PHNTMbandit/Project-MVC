@@ -1,5 +1,3 @@
-using UnityEngine;
-
 namespace MVC.Player.StateMachine
 {
     public abstract class PlayerState
@@ -24,6 +22,10 @@ namespace MVC.Player.StateMachine
 
         public virtual void OnUpdate()
         {
+            if (stateController.Health.CurrentHealth <= 0)
+            {
+                stateController.StateMachine.ChangeState(stateController.DeathState);
+            }
         }
 
         public virtual void OnFixedUpdate()

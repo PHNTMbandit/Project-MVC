@@ -8,6 +8,7 @@ namespace MVC.Controllers.StateMachine
     public class GameStateController : MonoBehaviour
     {
         public GameStateMachine StateMachine { get; private set; }
+        public GameOverState GameOverState { get; private set; }
         public GameMenuState MenuState { get; private set; }
         public GamePlayState PlayState { get; private set; }
 
@@ -20,6 +21,7 @@ namespace MVC.Controllers.StateMachine
         private void Awake()
         {
             StateMachine = new();
+            GameOverState = new(this);
             MenuState = new(this);
             PlayState = new(this);
         }

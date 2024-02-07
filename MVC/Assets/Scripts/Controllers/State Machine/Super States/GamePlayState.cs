@@ -24,6 +24,11 @@ namespace MVC.Controllers.StateMachine.SuperStates
             {
                 stateController.StateMachine.ChangeState(stateController.MenuState);
             }
+
+            if (GameController.Instance.Player.CurrentHealth <= 0)
+            {
+                stateController.StateMachine.ChangeState(stateController.GameOverState);
+            }
         }
     }
 }
