@@ -10,20 +10,6 @@ namespace MVC.Player.StateMachine.SubStates
         {
         }
 
-        public override void OnEnter()
-        {
-            base.OnEnter();
-
-            stateController.InputReader.onJump.AddListener(stateController.PlayerJump.Jump);
-        }
-
-        public override void OnExit()
-        {
-            base.OnExit();
-
-            stateController.InputReader.onJump.RemoveAllListeners();
-        }
-
         public override void OnUpdate()
         {
             base.OnUpdate();

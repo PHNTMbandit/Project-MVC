@@ -13,7 +13,7 @@ namespace MVC.Controllers.StateMachine.SuperStates
             base.OnEnter();
 
             Cursor.visible = false;
-            stateController.PlayerInput.SwitchCurrentActionMap("Gameplay");
+            stateController.InputReader.EnableGameplayInput(true);
         }
 
         public override void OnUpdate()

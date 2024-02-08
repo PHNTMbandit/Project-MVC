@@ -8,8 +8,12 @@ namespace MVC.UI
         [SerializeField, Range(0, 10)]
         private float _rotationSpeed;
 
-        [SerializeField]
         private InputReader _inputReader;
+
+        private void Awake()
+        {
+            _inputReader = ScriptableObject.CreateInstance<InputReader>();
+        }
 
         private void Update()
         {

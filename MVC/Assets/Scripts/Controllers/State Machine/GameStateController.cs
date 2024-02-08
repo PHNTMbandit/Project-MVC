@@ -1,7 +1,7 @@
 using System.Linq;
 using MVC.Controllers.StateMachine.SuperStates;
+using MVC.Input;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace MVC.Controllers.StateMachine
 {
@@ -12,9 +12,7 @@ namespace MVC.Controllers.StateMachine
         public GameVictoryState VictoryState { get; private set; }
         public GameMenuState MenuState { get; private set; }
         public GamePlayState PlayState { get; private set; }
-
-        [field: SerializeField]
-        public PlayerInput PlayerInput { get; private set; }
+        public InputReader InputReader { get; private set; }
 
         [SerializeField]
         private UIPanel[] _UIPanels;
@@ -26,6 +24,8 @@ namespace MVC.Controllers.StateMachine
             MenuState = new(this);
             PlayState = new(this);
             VictoryState = new(this);
+
+            InputReader = ScriptableObject.CreateInstance<InputReader>();
         }
 
         private void Start()

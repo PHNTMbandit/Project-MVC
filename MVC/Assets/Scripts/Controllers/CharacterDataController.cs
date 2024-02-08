@@ -30,7 +30,7 @@ namespace MVC.Utilities
         [SerializeField, Required]
         private TextAsset _JSONFile;
 
-        private void OnValidate()
+        private void OnEnable()
         {
             CharacterListData = JsonUtility.FromJson<CharacterList>(_JSONFile.text);
         }

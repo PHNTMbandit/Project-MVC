@@ -35,7 +35,10 @@ namespace MVC.Character
 
         public void Jump()
         {
-            _rb.AddForce(_rb.transform.up * _characterData.jumpForce, ForceMode.Impulse);
+            if (IsGrounded())
+            {
+                _rb.AddForce(_rb.transform.up * _characterData.jumpForce, ForceMode.Impulse);
+            }
         }
 
         public void SetGravityScale()

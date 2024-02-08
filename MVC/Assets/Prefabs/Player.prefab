@@ -220,7 +220,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Actions: {fileID: -944628639613478452, guid: 1e4b0cdb5ba16fc4d9a492a81afebd0d, type: 3}
-  m_NotificationBehavior: 2
+  m_NotificationBehavior: 0
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
     m_PersistentCalls:
@@ -233,67 +233,19 @@ MonoBehaviour:
       m_Calls: []
   m_ActionEvents:
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 11400000, guid: fe1a79578ad7d184ab9d378275ab8f3d, type: 2}
-        m_TargetAssemblyTypeName: MVC.Input.InputReader, Assembly-CSharp
-        m_MethodName: OnMove
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: 15102d8e-93ae-400f-b608-8ee6669314ee
     m_ActionName: Gameplay/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d,/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 11400000, guid: fe1a79578ad7d184ab9d378275ab8f3d, type: 2}
-        m_TargetAssemblyTypeName: MVC.Input.InputReader, Assembly-CSharp
-        m_MethodName: OnLook
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: 0cd7eea7-fc28-4406-a6b4-8b5f2a3e9ee0
     m_ActionName: Gameplay/Look[/Mouse/delta]
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 11400000, guid: fe1a79578ad7d184ab9d378275ab8f3d, type: 2}
-        m_TargetAssemblyTypeName: MVC.Input.InputReader, Assembly-CSharp
-        m_MethodName: OnJump
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: 4de74961-e4b0-41b9-b362-daa2d6516a52
     m_ActionName: Gameplay/Jump[/Keyboard/space]
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 11400000, guid: fe1a79578ad7d184ab9d378275ab8f3d, type: 2}
-        m_TargetAssemblyTypeName: MVC.Input.InputReader, Assembly-CSharp
-        m_MethodName: OnShoot
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: 70b86e11-6207-4606-99e8-022f28f84c62
     m_ActionName: Gameplay/Shoot[/Mouse/leftButton]
   - m_PersistentCalls:
@@ -309,35 +261,11 @@ MonoBehaviour:
     m_ActionId: 41882bab-41d5-490d-bf11-c582fa4214ff
     m_ActionName: UI/Cancel[/Keyboard/escape]
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 11400000, guid: fe1a79578ad7d184ab9d378275ab8f3d, type: 2}
-        m_TargetAssemblyTypeName: MVC.Input.InputReader, Assembly-CSharp
-        m_MethodName: OnPointerPosition
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: 61f0a675-d3f1-4345-943b-1e92003c2294
     m_ActionName: UI/Point[/Mouse/position]
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 11400000, guid: fe1a79578ad7d184ab9d378275ab8f3d, type: 2}
-        m_TargetAssemblyTypeName: MVC.Input.InputReader, Assembly-CSharp
-        m_MethodName: OnClick
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: c4a2db44-e53d-4bfc-9fa2-c3e7a1e08f8c
     m_ActionName: UI/Click[/Mouse/leftButton]
   - m_PersistentCalls:
@@ -361,35 +289,11 @@ MonoBehaviour:
     m_ActionId: c61fd3d7-e23c-4981-881c-fc28c1eb0846
     m_ActionName: UI/TrackedDeviceOrientation
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 11400000, guid: fe1a79578ad7d184ab9d378275ab8f3d, type: 2}
-        m_TargetAssemblyTypeName: MVC.Input.InputReader, Assembly-CSharp
-        m_MethodName: OnAim
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: e51b7821-bf1a-45e3-85bd-a5e6d7bc87fa
     m_ActionName: Gameplay/Aim[/XInputControllerWindows/leftTrigger,/Mouse/rightButton]
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 11400000, guid: fe1a79578ad7d184ab9d378275ab8f3d, type: 2}
-        m_TargetAssemblyTypeName: MVC.Input.InputReader, Assembly-CSharp
-        m_MethodName: OnSprint
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: dd53365f-906c-4a7f-9860-bee30c7bb039
     m_ActionName: Gameplay/Sprint[/XInputControllerWindows/buttonEast,/Keyboard/shift]
   - m_PersistentCalls:
@@ -526,7 +430,6 @@ MonoBehaviour:
   <FollowTarget>k__BackingField: {fileID: 0}
   <Animator>k__BackingField: {fileID: 7869314242951249722}
   <ThirdPersonCamera>k__BackingField: {fileID: 0}
-  <InputReader>k__BackingField: {fileID: 11400000, guid: fe1a79578ad7d184ab9d378275ab8f3d, type: 2}
   _characterDataController: {fileID: 11400000, guid: 1c1a503aa151ec14b80ee709d92bc8ef, type: 2}
 --- !u!1001 &5402240032960302606
 PrefabInstance:

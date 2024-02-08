@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 
 namespace MVC.Input
 {
-    [CreateAssetMenu(fileName = "Input Handler", menuName = "MVC/Input/Input Handler", order = 1)]
+    [CreateAssetMenu(fileName = "Input Reader", menuName = "MVC/Input/Input Reader", order = 1)]
     public class InputReader : ScriptableObject, GameControls.IGameplayActions
     {
         public GameControls GameControls { get; private set; }
@@ -17,24 +17,18 @@ namespace MVC.Input
         public Vector2 MoveInput { get; private set; }
         public Vector2 PointerPosition { get; private set; }
 
-        [HideInInspector]
-        public UnityEvent onJump;
+        public UnityAction onJump;
 
         private void OnEnable()
         {
-            if (GameControls == null)
-            {
-                GameControls = new GameControls();
-                GameControls.Gameplay.AddCallbacks(this);
-                GameControls.Gameplay.AddCallbacks(this);
-            }
+            GameControls ??= new GameControls();
 
-            EnableGameplayInput();
+            EnableGameplayInput(true);
         }
 
         private void OnDisable()
         {
-            EnableUIInput();
+            EnableGameplayInput(false);
         }
 
         public void OnAim(InputAction.CallbackContext context)
@@ -121,16 +115,18 @@ namespace MVC.Input
             }
         }
 
-        public void EnableGameplayInput()
+        public void EnableGameplayInput(bool enable)
         {
-            GameControls.Gameplay.Enable();
-            GameControls.UI.Disable();
-        }
-
-        public void EnableUIInput()
-        {
-            GameControls.Gameplay.Disable();
-            GameControls.UI.Enable();
+            if (enable)
+            {
+                GameControls.Gameplay.AddCallbacks(this);
+                GameControls.Gameplay.Enable();
+            }
+            else
+            {
+                GameControls.Gameplay.RemoveCallbacks(this);
+                GameControls.Gameplay.Disable();
+            }
         }
     }
 }

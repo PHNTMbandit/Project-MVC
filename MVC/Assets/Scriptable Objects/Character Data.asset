@@ -28,9 +28,9 @@ MonoBehaviour:
       airMoveSpeed: 25
     - name: Mage
       fireRate: 3.8
-      targetingRange: 70
+      targetingRange: 30
       moveSpeed: 65
-      jumpForce: 13
+      jumpForce: 26
       airMoveSpeed: 45
     - name: Rogue
       fireRate: 6

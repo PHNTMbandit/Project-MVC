@@ -26,13 +26,11 @@ namespace MVC.Player.StateMachine
         [field: FoldoutGroup("References"), SerializeField]
         public ThirdPersonCamera ThirdPersonCamera { get; private set; }
 
-        [field: FoldoutGroup("References"), SerializeField]
-        public InputReader InputReader { get; private set; }
-
         [FoldoutGroup("References"), SerializeField]
         private CharacterDataController _characterDataController;
 
         public Health Health { get; private set; }
+        public InputReader InputReader { get; private set; }
         public CharacterData CharacterData { get; private set; }
         public PlayerStateMachine StateMachine { get; private set; }
         public PlayerAimState AimState { get; private set; }
@@ -60,6 +58,9 @@ namespace MVC.Player.StateMachine
             PlayerMove = GetComponent<CharacterMove>();
             PlayerShoot = GetComponent<CharacterShoot>();
             CharacterData = _characterDataController.GetCharacterData(name);
+
+            InputReader = ScriptableObject.CreateInstance<InputReader>();
+            InputReader.onJump += PlayerJump.Jump;
         }
 
         private void Start()

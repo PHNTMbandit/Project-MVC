@@ -16,8 +16,12 @@ namespace MVC.Utilities
         [FoldoutGroup("References"), SerializeField]
         private Transform _followTarget, _player;
 
-        [FoldoutGroup("References"), SerializeField]
         private InputReader _inputReader;
+
+        private void Awake()
+        {
+            _inputReader = ScriptableObject.CreateInstance<InputReader>();
+        }
 
         public void LockOn(Transform target)
         {
